@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 
 export function TiltCard({
@@ -14,16 +14,8 @@ export function TiltCard({
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
 
-  const rotateX = useSpring((y.get() - 0.5) * -15, { stiffness: 300, damping: 30 });
-  const rotateY = useSpring((x.get() - 0.5) * 15, { stiffness: 300, damping: 30 });
-
-  const background = useMotionTemplate`
-    radial-gradient(
-      400px circle at ${() => `${x.get() * 100}% ${y.get() * 100}%`},
-      rgba(216, 255, 62, 0.08),
-      transparent 80%
-    )
-  `;
+  const rotateX = useSpring(0, { stiffness: 300, damping: 30 });
+  const rotateY = useSpring(0, { stiffness: 300, damping: 30 });
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     if (!ref.current) return;
@@ -56,10 +48,6 @@ export function TiltCard({
       whileHover={{ scale: 1.01 }}
       className={`relative transition-all duration-500 ${className}`}
     >
-      <motion.div
-        className="pointer-events-none absolute inset-0 -z-10 rounded-[23px]"
-        style={{ background }}
-      />
       {children}
     </motion.div>
   );
