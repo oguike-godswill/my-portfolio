@@ -37,7 +37,7 @@ export function ProjectTextCard({
         {project.title}
       </h3>
 
-      <p className="mt-4 max-w-md text-base leading-relaxed text-secondary">
+      <p className="mt-4 max-w-md text-base leading-relaxed text-secondary normal-case">
         {project.description}
       </p>
 

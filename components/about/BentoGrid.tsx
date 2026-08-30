@@ -27,7 +27,7 @@ function Card({ children, className = "" }: { children: React.ReactNode; classNa
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -6, scale: 1.01 }}
-      className={`group rounded-[23px] border border-line bg-surface/50 p-6 md:p-8 transition-all duration-500 hover:border-accent/30 hover:bg-surface hover:shadow-2xl hover:shadow-accent/5 ${className}`}
+      className={`group rounded-xl md:rounded-[23px] border border-line bg-surface/50 p-5 md:p-8 transition-all duration-500 hover:border-accent/30 hover:bg-surface hover:shadow-2xl hover:shadow-accent/5 ${className}`}
     >
       {children}
     </motion.div>
@@ -36,12 +36,12 @@ function Card({ children, className = "" }: { children: React.ReactNode; classNa
 
 export function BentoGrid() {
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-8 md:py-16">
       <Container>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-3 md:gap-4 md:grid-cols-2">
           {/* Narrative */}
-          <Card className="p-8 md:p-10 md:col-span-2">
-            <div className="grid gap-8 md:grid-cols-3">
+          <Card className="md:col-span-2">
+            <div className="grid gap-6 md:gap-8 md:grid-cols-3">
               {[
                 { label: "TODAY", text: "I'm a frontend developer based in Nigeria, focused on building modern web applications that blend clean design with solid engineering.", icon: MapPin },
                 { label: "GOAL", text: "To create digital experiences that not only look great but feel seamless and intuitive for everyone who uses them.", icon: Target },
@@ -54,11 +54,11 @@ export function BentoGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <s.icon size={18} className="text-accent" />
-                    <p className="text-xs font-medium tracking-[0.08em] text-accent">{s.label}</p>
+                  <div className="flex items-center gap-2 mb-2 md:mb-3">
+                    <s.icon size={16} className="text-accent md:w-[18px] md:h-[18px]" />
+                    <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent">{s.label}</p>
                   </div>
-                  <p className="text-base leading-relaxed text-secondary">{s.text}</p>
+                  <p className="text-sm md:text-base leading-relaxed text-secondary">{s.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -71,15 +71,15 @@ export function BentoGrid() {
               whileInView={{ scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10"
+              className="mb-3 flex h-10 w-10 md:mb-4 md:h-12 md:w-12 items-center justify-center rounded-xl md:rounded-2xl bg-accent/10"
             >
-              <GraduationCap size={24} className="text-accent" />
+              <GraduationCap size={20} className="text-accent md:w-6 md:h-6" />
             </motion.div>
-            <p className="text-xs font-medium tracking-[0.08em] text-accent mb-3">EDUCATION</p>
-            <p className="text-base leading-relaxed text-secondary">
+            <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent mb-2 md:mb-3">EDUCATION</p>
+            <p className="text-sm md:text-base leading-relaxed text-secondary">
               Self-taught developer with a passion for continuous learning. Studied Computer Science fundamentals and built real-world projects to sharpen my skills.
             </p>
-            <div className="mt-4 flex items-center gap-2 text-xs text-muted">
+            <div className="mt-3 flex items-center gap-2 text-[10px] md:mt-4 md:text-xs text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
               Always learning
             </div>
@@ -92,15 +92,15 @@ export function BentoGrid() {
               whileInView={{ scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10"
+              className="mb-3 flex h-10 w-10 md:mb-4 md:h-12 md:w-12 items-center justify-center rounded-xl md:rounded-2xl bg-accent/10"
             >
-              <Zap size={24} className="text-accent" />
+              <Zap size={20} className="text-accent md:w-6 md:h-6" />
             </motion.div>
-            <p className="text-xs font-medium tracking-[0.08em] text-accent mb-3">CURRENTLY</p>
-            <p className="text-base leading-relaxed text-secondary">
+            <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent mb-2 md:mb-3">CURRENTLY</p>
+            <p className="text-sm md:text-base leading-relaxed text-secondary">
               Learning advanced animation techniques with Framer Motion and exploring backend development to build more complete products.
             </p>
-            <div className="mt-4 flex items-center gap-2 text-xs text-muted">
+            <div className="mt-3 flex items-center gap-2 text-[10px] md:mt-4 md:text-xs text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
               Building something new
             </div>
@@ -108,8 +108,8 @@ export function BentoGrid() {
 
           {/* Skills */}
           <Card>
-            <p className="text-xs font-medium tracking-[0.08em] text-accent mb-4">SKILLS</p>
-            <div className="grid grid-cols-3 gap-3">
+            <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent mb-3 md:mb-4">SKILLS</p>
+            <div className="grid grid-cols-3 gap-2 md:gap-3">
               {skills.map((skill, i) => (
                 <motion.div
                   key={skill.name}
@@ -118,10 +118,10 @@ export function BentoGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex flex-col items-center gap-2 rounded-xl border border-line bg-surface p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
+                  className="flex flex-col items-center gap-1.5 md:gap-2 rounded-lg md:rounded-xl border border-line bg-surface p-2 md:p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
                 >
-                  <skill.icon size={20} style={{ color: skill.color }} />
-                  <span className="text-[10px] text-secondary">{skill.name}</span>
+                  <skill.icon size={16} style={{ color: skill.color }} className="md:w-5 md:h-5" />
+                  <span className="text-[9px] md:text-[10px] text-secondary">{skill.name}</span>
                 </motion.div>
               ))}
             </div>
@@ -129,8 +129,8 @@ export function BentoGrid() {
 
           {/* Services */}
           <Card>
-            <p className="text-xs font-medium tracking-[0.08em] text-accent mb-4">SERVICES</p>
-            <div className="space-y-3">
+            <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent mb-3 md:mb-4">SERVICES</p>
+            <div className="space-y-2 md:space-y-3">
               {services.map((s, i) => (
                 <motion.div
                   key={s.text}
@@ -139,10 +139,10 @@ export function BentoGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                   whileHover={{ x: 4 }}
-                  className="flex items-center gap-3 rounded-lg border border-line bg-surface p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
+                  className="flex items-center gap-2 md:gap-3 rounded-lg border border-line bg-surface p-2 md:p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
                 >
-                  <s.icon size={18} className="text-accent" />
-                  <span className="text-sm text-secondary">{s.text}</span>
+                  <s.icon size={16} className="text-accent md:w-[18px] md:h-[18px]" />
+                  <span className="text-xs md:text-sm text-secondary">{s.text}</span>
                 </motion.div>
               ))}
             </div>

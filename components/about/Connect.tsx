@@ -14,14 +14,14 @@ const socials = [
 
 export function Connect() {
   return (
-    <section className="py-16 md:py-24 border-t border-line">
+    <section className="py-10 md:py-24 border-t border-line">
       <Container>
         <div className="text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="label mb-4 text-accent"
+            className="label mb-3 md:mb-4 text-accent"
           >
             Let&apos;s Connect
           </motion.p>
@@ -30,7 +30,7 @@ export function Connect() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl"
           >
             Get in touch
           </motion.h2>
@@ -39,7 +39,7 @@ export function Connect() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-secondary"
+            className="mx-auto mt-4 max-w-lg text-sm md:text-base leading-relaxed text-secondary"
           >
             Thanks for stopping by! I&apos;m always open to discussing new projects,
             creative ideas, or opportunities to be part of your vision.
@@ -50,7 +50,7 @@ export function Connect() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="mt-8 flex justify-center gap-4"
+            className="mt-6 md:mt-8 flex justify-center gap-3 md:gap-4"
           >
             {socials.map((social, i) => (
               <motion.a
@@ -63,10 +63,10 @@ export function Connect() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + i * 0.05, type: "spring", stiffness: 200 }}
                 whileHover={{ y: -5, scale: 1.1, borderColor: "var(--color-accent)", color: "var(--color-accent)" }}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-surface text-secondary transition-all duration-300"
+                className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-line bg-surface text-secondary transition-all duration-300"
                 aria-label={social.label}
               >
-                <social.icon size={18} />
+                <social.icon size={16} className="md:w-[18px] md:h-[18px]" />
               </motion.a>
             ))}
           </motion.div>
