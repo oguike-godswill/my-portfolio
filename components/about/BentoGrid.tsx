@@ -109,7 +109,7 @@ export function BentoGrid() {
           {/* Skills */}
           <Card>
             <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent mb-3 md:mb-4">SKILLS</p>
-            <div className="grid grid-cols-3 gap-2 md:gap-3">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-3">
               {skills.map((skill, i) => (
                 <motion.div
                   key={skill.name}
@@ -118,10 +118,10 @@ export function BentoGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex flex-col items-center gap-1.5 md:gap-2 rounded-lg md:rounded-xl border border-line bg-surface p-2 md:p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
+                  className="flex flex-col items-center gap-1.5 md:gap-2 rounded-lg md:rounded-xl border border-line bg-surface p-3 md:p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
                 >
-                  <skill.icon size={16} style={{ color: skill.color }} className="md:w-5 md:h-5" />
-                  <span className="text-[9px] md:text-[10px] text-secondary">{skill.name}</span>
+                  <skill.icon size={18} style={{ color: skill.color }} className="md:w-5 md:h-5" />
+                  <span className="text-[10px] md:text-[10px] text-secondary">{skill.name}</span>
                 </motion.div>
               ))}
             </div>
@@ -139,10 +139,10 @@ export function BentoGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
                   whileHover={{ x: 4 }}
-                  className="flex items-center gap-2 md:gap-3 rounded-lg border border-line bg-surface p-2 md:p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
+                  className="flex items-center gap-3 rounded-lg border border-line bg-surface p-3 md:p-3 transition-all duration-300 hover:border-accent/30 hover:bg-surface-2 cursor-default"
                 >
-                  <s.icon size={16} className="text-accent md:w-[18px] md:h-[18px]" />
-                  <span className="text-xs md:text-sm text-secondary">{s.text}</span>
+                  <s.icon size={18} className="text-accent md:w-[18px] md:h-[18px]" />
+                  <span className="text-sm text-secondary">{s.text}</span>
                 </motion.div>
               ))}
             </div>

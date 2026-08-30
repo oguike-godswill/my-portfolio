@@ -24,6 +24,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
   return (
     <>
+      {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24">
         <Container>
           <div className="mb-8">
@@ -79,6 +80,33 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </Container>
       </section>
 
+      {/* Overview */}
+      <section className="py-16 md:py-24 border-t border-line">
+        <Container>
+          <div className="grid gap-12 md:grid-cols-2">
+            <div>
+              <p className="label mb-4 text-accent">Overview</p>
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+                Project Overview
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-secondary normal-case">
+                {project.longDescription}
+              </p>
+            </div>
+            <div>
+              <p className="label mb-4 text-accent">My Role</p>
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+                {project.role}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-secondary normal-case">
+                Responsible for the entire frontend development, from design implementation to performance optimization.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Features, Challenges, Results */}
       <section className="py-16 md:py-24 border-t border-line">
         <Container>
           <div className="grid gap-12 md:grid-cols-3">
@@ -117,6 +145,26 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 ))}
               </ul>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="py-16 md:py-24 border-t border-line">
+        <Container>
+          <p className="label mb-4 text-accent">Tech Stack</p>
+          <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            Technologies Used
+          </h2>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {project.tags.map((tag) => (
+              <div
+                key={tag}
+                className="rounded-full border border-line bg-surface/50 px-4 py-2 text-sm text-secondary"
+              >
+                {tag}
+              </div>
+            ))}
           </div>
         </Container>
       </section>
