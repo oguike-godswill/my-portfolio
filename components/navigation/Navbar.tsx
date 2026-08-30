@@ -12,6 +12,7 @@ const links = [
   { href: "/", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/resume", label: "Resume", external: true },
 ];
 
 export function Navbar() {
@@ -70,6 +71,8 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 className={cn(
                   "text-sm transition-colors duration-300 link-underline",
                   pathname === link.href ? "text-accent" : "text-secondary hover:text-foreground"
@@ -122,6 +125,8 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     className="font-display block py-3 text-5xl font-semibold tracking-tight text-foreground"
                   >
                     {link.label}
