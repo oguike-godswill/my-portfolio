@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { GreetingBubble } from "./GreetingBubble";
 import { ClockWidget } from "./HeroExtras";
-import { MoodPills } from "./MoodPills";
+import { Scene3DWrapper } from "./Scene3DWrapper";
 import { site } from "@/lib/site";
 
 const accentWords = ["experiences", "interfaces", "products", "ideas"];
@@ -24,29 +24,9 @@ export function Hero() {
   }, [reduceMotion]);
 
   return (
-    <section className="relative min-h-[80vh] pt-24 pb-8 md:pt-32 md:pb-12 overflow-hidden">
-      {/* Background ambient glow */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-accent/20 blur-[100px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-1/4 top-1/2 h-72 w-72 rounded-full bg-purple-500/10 blur-[120px]"
-        />
-      </div>
-
-      {/* Scattered mood pills */}
-      <MoodPills />
+    <section className="relative min-h-[80vh] pt-24 pb-8 md:pt-32 md:pb-12">
+      {/* 3D Background - fixed via Scene3DWrapper */}
+      <Scene3DWrapper />
 
       <Container className="relative z-10 h-full">
         <div className="grid h-full min-h-[60vh] items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
@@ -105,9 +85,6 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-10 flex flex-wrap gap-4"
             >
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                <Button href="/">View My Work</Button>
-              </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Button href="/contact" variant="secondary">
                   Let&apos;s Talk
