@@ -8,10 +8,15 @@ const skills = [
   { name: "Next.js", icon: "▲", color: "#ffffff" },
   { name: "TypeScript", icon: "TS", color: "#3178C6" },
   { name: "Tailwind", icon: "🎨", color: "#06B6D4" },
+  { name: "JavaScript", icon: "JS", color: "#F7DF1E" },
   { name: "Node.js", icon: "⬡", color: "#339933" },
+  { name: "PostgreSQL", icon: "🐘", color: "#4169E1" },
+  { name: "Prisma", icon: "P", color: "#2D3748" },
   { name: "MongoDB", icon: "🍃", color: "#47A248" },
-  { name: "Framer", icon: "F", color: "#05F" },
   { name: "Git", icon: "⎇", color: "#F05032" },
+  { name: "Figma", icon: "F", color: "#F24E1E" },
+  { name: "Vercel", icon: "△", color: "#ffffff" },
+  { name: "Flutter", icon: "🦋", color: "#02569B" },
 ];
 
 export function TechStack() {
@@ -23,7 +28,7 @@ export function TechStack() {
           Tools I use daily
         </h2>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
           {skills.map((skill, i) => (
             <motion.div
               key={skill.name}

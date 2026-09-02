@@ -7,8 +7,7 @@ import { PageLoader } from "@/components/ui/PageLoader";
 import { SpotifyPlayer } from "@/components/ui/SpotifyPlayer";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { Footer } from "@/components/ui/Footer";
-import { GlobalPills } from "@/components/ui/GlobalPills";
-import "./globals.css";
+
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -28,11 +27,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Godswill — Frontend Developer",
-    template: "%s | Godswill",
+    default: "Oguike Godswill — Frontend Engineer",
+    template: "%s | Oguike Godswill",
   },
   description:
-    "Frontend developer building fast, responsive and engaging web products with clean design and modern frontend engineering.",
+    "Frontend Engineer building modern, responsive, and interactive web applications with a focus on clean interfaces and thoughtful user experiences.",
 };
 
 export default function RootLayout({
@@ -49,7 +48,6 @@ export default function RootLayout({
         <PageLoader />
         <ScrollProgress />
         <CustomCursor />
-        <GlobalPills />
         <Navbar />
         <main>{children}</main>
         <Footer />
