@@ -5,22 +5,16 @@ import { Container } from "@/components/ui/Container";
 
 const experience = [
   {
-    year: "2024 — Present",
-    role: "Frontend Developer",
-    company: "Freelance",
-    desc: "Building modern web applications for clients worldwide.",
+    year: "June 2025 — Present",
+    role: "Frontend Engineer",
+    company: "ConnectNigeria",
+    desc: "Develop and maintain the main ConnectNigeria.com platform, contributing to new features and improvements across the existing product. Contributing to the redesign and frontend implementation of the ConnectNigeria landing page, translating updated designs into responsive, interactive interfaces. Implementing discount code functionality within the checkout flow, integrating frontend interactions with APIs to support the purchasing experience.",
   },
   {
-    year: "2023 — 2024",
-    role: "Junior Developer",
-    company: "Tech Studio",
-    desc: "Worked on e-commerce platforms and SaaS products.",
-  },
-  {
-    year: "2022 — 2023",
-    role: "Intern Developer",
-    company: "Digital Agency",
-    desc: "Learned the fundamentals of professional web development.",
+    year: "September 2025 — May 2026",
+    role: "Frontend Engineering Intern",
+    company: "ConnectNigeria",
+    desc: "Converted Figma designs into responsive, production-ready frontend implementations. Contributed to RedHotConcepts, translating design concepts into functional web interfaces. Built interactive UI components and responsive layouts across desktop and mobile breakpoints.",
   },
 ];
 
@@ -68,7 +62,7 @@ export function Timeline() {
                 {item.role}
               </h3>
               <p className="text-sm text-accent">{item.company}</p>
-              <p className="mt-2 text-sm leading-relaxed text-secondary">
+              <p className="mt-2 text-sm leading-relaxed text-secondary normal-case">
                 {item.desc}
               </p>
             </motion.div>

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 
 const stats = [
-  { value: "3+", label: "Years Experience" },
-  { value: "15+", label: "Projects Built" },
-  { value: "10+", label: "Happy Clients" },
+  { value: "1+", label: "Years Experience" },
+  { value: "4+", label: "Projects Built" },
+  { value: "3+", label: "Happy Clients" },
   { value: "100%", label: "Client Satisfaction" },
 ];
 

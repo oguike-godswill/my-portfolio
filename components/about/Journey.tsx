@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
+import { site } from "@/lib/site";
 
 export function Journey() {
   return (
@@ -19,12 +20,10 @@ export function Journey() {
             <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               What I do now
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-secondary">
-              I&apos;m a frontend developer building modern web applications for clients worldwide.
-              I focus on creating fast, responsive, and visually compelling digital products
-              using React, Next.js, and TypeScript.
+            <p className="mt-6 text-base leading-relaxed text-secondary normal-case">
+              I&apos;m a Frontend Engineer at ConnectNigeria, building and maintaining production web applications. I work across the stack — from translating Figma designs into responsive interfaces to integrating APIs and building database-backed features with Prisma and PostgreSQL.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-secondary">
+            <p className="mt-4 text-base leading-relaxed text-secondary normal-case">
               When I&apos;m not coding, you&apos;ll find me exploring new design trends,
               contributing to open source, or learning about emerging technologies.
             </p>
@@ -41,14 +40,13 @@ export function Journey() {
             <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               How I got here
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-secondary">
+            <p className="mt-6 text-base leading-relaxed text-secondary normal-case">
               My journey started with curiosity — tinkering with websites and wondering
-              how they worked. That curiosity turned into passion, and passion into profession.
+              how they worked. That curiosity turned into passion, and passion into profession. I studied Computer Science at ESCAE University and built projects to sharpen my skills.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-secondary">
-              I&apos;ve grown from writing my first HTML to building full-stack applications,
-              always driven by the desire to create things that matter and make people&apos;s
-              lives easier.
+            <p className="mt-4 text-base leading-relaxed text-secondary normal-case">
+              I&apos;ve grown from writing my first HTML to building full-stack applications
+              with React, Next.js, TypeScript, and Prisma — always driven by the desire to create things that matter.
             </p>
           </motion.div>
         </div>

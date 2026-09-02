@@ -5,14 +5,6 @@ import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/lib/site";
 
-const images = [
-  { label: "creative", color: "rgba(150,40,26,0.6)", span: "col-span-2 row-span-2" },
-  { label: "music", color: "rgba(60,81,134,0.6)", span: "col-span-1 row-span-1" },
-  { label: "flow", color: "rgba(0,83,147,0.6)", span: "col-span-1 row-span-1" },
-  { label: "drives", color: "rgba(0,89,117,0.6)", span: "col-span-1 row-span-2" },
-  { label: "design", color: "rgba(100,60,134,0.6)", span: "col-span-1 row-span-1" },
-];
-
 export function HeroAbout() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -54,7 +46,7 @@ export function HeroAbout() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mt-3 text-lg md:mt-4 md:text-xl text-muted"
           >
-            Building digital experiences that matter.
+            {site.role} · {site.location}
           </motion.p>
         </div>
 
@@ -63,7 +55,13 @@ export function HeroAbout() {
           style={{ y }}
           className="mt-6 grid grid-cols-2 grid-rows-3 gap-3 h-[300px] md:mt-10 md:grid-cols-3 md:grid-rows-3 md:gap-4 md:h-[500px]"
         >
-          {images.map((img, i) => (
+          {[
+            { label: "engineering", color: "rgba(216,255,62,0.15)", span: "col-span-2 row-span-2" },
+            { label: "design", color: "rgba(123,104,238,0.15)", span: "col-span-1 row-span-1" },
+            { label: "code", color: "rgba(0,191,255,0.15)", span: "col-span-1 row-span-1" },
+            { label: "build", color: "rgba(255,105,180,0.15)", span: "col-span-1 row-span-2" },
+            { label: "ship", color: "rgba(16,185,129,0.15)", span: "col-span-1 row-span-1" },
+          ].map((img, i) => (
             <motion.div
               key={img.label}
               initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
@@ -82,7 +80,6 @@ export function HeroAbout() {
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4">
-                <p className="text-[10px] md:text-xs text-white/80">&apos;26 08 29</p>
                 <p className="text-xs md:text-sm font-medium text-white">{img.label}</p>
               </div>
             </motion.div>

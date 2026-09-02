@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/lib/site";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 
 const socials = [
   { icon: Github, href: site.github, label: "GitHub" },
   { icon: Linkedin, href: site.linkedin, label: "LinkedIn" },
-  { icon: Twitter, href: site.twitter, label: "Twitter" },
+  { icon: ExternalLink, href: site.portfolio, label: "Portfolio" },
   { icon: Mail, href: `mailto:${site.email}`, label: "Email" },
 ];
 

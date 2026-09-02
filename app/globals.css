@@ -179,16 +179,27 @@ body::before {
   75% { transform: translate(-10%, -20%) scale(1.1); }
 }
 
-/* 3D Canvas */
-.scene-3d {
-  z-index: 0;
+/* Neon text gradients */
+.text-gradient-white {
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 40%, #ffffff 60%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15));
 }
-.scene-3d canvas {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #d8ff3e 0%, #a8e600 30%, #d8ff3e 50%, #e8ff7e 70%, #d8ff3e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-glow {
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 40px currentColor;
 }
 
 /* Reduced motion */

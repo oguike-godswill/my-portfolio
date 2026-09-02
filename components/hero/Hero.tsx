@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { GreetingBubble } from "./GreetingBubble";
 import { ClockWidget } from "./HeroExtras";
 import { Scene3DWrapper } from "./Scene3DWrapper";
+import { Avatar } from "./Avatar";
 import { site } from "@/lib/site";
 
 const accentWords = ["experiences", "interfaces", "products", "ideas"];
@@ -24,32 +25,32 @@ export function Hero() {
   }, [reduceMotion]);
 
   return (
-    <section className="relative min-h-[80vh] pt-24 pb-8 md:pt-32 md:pb-12">
-      {/* 3D Background - fixed via Scene3DWrapper */}
+    <section className="relative min-h-screen pt-24 pb-8 md:pt-32 md:pb-12">
+      {/* Fixed 3D Background */}
       <Scene3DWrapper />
 
       <Container className="relative z-10 h-full">
-        <div className="grid h-full min-h-[60vh] items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div className="grid h-full min-h-[70vh] items-center gap-8 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
           {/* Left: Hero content */}
-          <div>
+          <div className="order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <p className="label mb-6 inline-flex items-center gap-2 text-secondary">
+              <p className="label mb-4 inline-flex items-center gap-2 text-secondary">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                 {site.role}
               </p>
             </motion.div>
 
-            <h1 className="font-display text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.9] tracking-tight text-foreground">
+            <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[0.9] tracking-tight">
               <span className="block overflow-hidden">
                 <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="block"
+                  className="block text-gradient-white"
                 >
                   I build digital
                 </motion.span>
@@ -62,7 +63,8 @@ export function Hero() {
                     animate={{ y: 0, opacity: 1, rotateX: 0 }}
                     exit={{ y: "-100%", opacity: 0, rotateX: 20 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="block serif-accent text-accent"
+                    className="block text-gradient-accent"
+                    style={{ minWidth: "7.5ch" }}
                   >
                     {accentWords[wordIndex]}
                   </motion.span>
@@ -74,7 +76,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-8 max-w-md text-lg leading-relaxed text-secondary"
+              className="mt-6 max-w-md text-lg leading-relaxed text-secondary"
             >
               Building fast, responsive web products with clean design.
             </motion.p>
@@ -83,7 +85,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-8 flex flex-wrap gap-4"
             >
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Button href="/contact" variant="secondary">
@@ -92,17 +94,11 @@ export function Hero() {
               </motion.div>
             </motion.div>
           </div>
+        </div>
 
-          {/* Right: Widgets */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:flex lg:flex-col lg:items-end lg:gap-8"
-          >
-            <GreetingBubble />
-            <ClockWidget />
-          </motion.div>
+        {/* Avatar — center right */}
+        <div className="pointer-events-none absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block">
+          <Avatar />
         </div>
       </Container>
     </section>

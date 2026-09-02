@@ -10,7 +10,12 @@ const skills = [
   { name: "TypeScript", icon: Code, color: "#3178C6" },
   { name: "Tailwind", icon: Palette, color: "#06B6D4" },
   { name: "Node.js", icon: Code, color: "#339933" },
+  { name: "Prisma", icon: Code, color: "#2D3748" },
+  { name: "PostgreSQL", icon: Code, color: "#4169E1" },
+  { name: "MongoDB", icon: Code, color: "#47A248" },
   { name: "Framer", icon: Sparkles, color: "#05F" },
+  { name: "Git", icon: Code, color: "#F05032" },
+  { name: "Flutter", icon: Code, color: "#02569B" },
 ];
 
 const services = [
@@ -43,9 +48,9 @@ export function BentoGrid() {
           <Card className="md:col-span-2">
             <div className="grid gap-6 md:gap-8 md:grid-cols-3">
               {[
-                { label: "TODAY", text: "I'm a frontend developer based in Nigeria, focused on building modern web applications that blend clean design with solid engineering.", icon: MapPin },
-                { label: "GOAL", text: "To create digital experiences that not only look great but feel seamless and intuitive for everyone who uses them.", icon: Target },
-                { label: "GROWTH", text: "From writing my first lines of HTML to shipping full-stack applications, every project has been a step forward in mastering the craft.", icon: TrendingUp },
+                { label: "TODAY", text: "I'm a Frontend Engineer based in Lagos, Nigeria, building modern web applications with a focus on clean interfaces and thoughtful user experiences. Currently working on production applications at ConnectNigeria.", icon: MapPin },
+                { label: "GOAL", text: "To create digital experiences that not only look great but feel seamless and intuitive for everyone who uses them. Always striving to bridge design and engineering.", icon: Target },
+                { label: "GROWTH", text: "From writing my first lines of HTML to shipping full-stack applications with React, Next.js, TypeScript, and Prisma — every project has been a step forward in mastering the craft.", icon: TrendingUp },
               ].map((s, i) => (
                 <motion.div
                   key={s.label}
@@ -58,7 +63,7 @@ export function BentoGrid() {
                     <s.icon size={16} className="text-accent md:w-[18px] md:h-[18px]" />
                     <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent">{s.label}</p>
                   </div>
-                  <p className="text-sm md:text-base leading-relaxed text-secondary">{s.text}</p>
+                  <p className="text-sm md:text-base leading-relaxed text-secondary normal-case">{s.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -76,8 +81,8 @@ export function BentoGrid() {
               <GraduationCap size={20} className="text-accent md:w-6 md:h-6" />
             </motion.div>
             <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent mb-2 md:mb-3">EDUCATION</p>
-            <p className="text-sm md:text-base leading-relaxed text-secondary">
-              Self-taught developer with a passion for continuous learning. Studied Computer Science fundamentals and built real-world projects to sharpen my skills.
+            <p className="text-sm md:text-base leading-relaxed text-secondary normal-case">
+              B.Sc. Computer Science from ESCAE University, Benin Republic (2019 – 2023). Supplemented with hands-on project building and continuous self-learning.
             </p>
             <div className="mt-3 flex items-center gap-2 text-[10px] md:mt-4 md:text-xs text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
@@ -97,12 +102,12 @@ export function BentoGrid() {
               <Zap size={20} className="text-accent md:w-6 md:h-6" />
             </motion.div>
             <p className="text-[10px] md:text-xs font-medium tracking-[0.08em] text-accent mb-2 md:mb-3">CURRENTLY</p>
-            <p className="text-sm md:text-base leading-relaxed text-secondary">
-              Learning advanced animation techniques with Framer Motion and exploring backend development to build more complete products.
+            <p className="text-sm md:text-base leading-relaxed text-secondary normal-case">
+              Working as a Frontend Engineer at ConnectNigeria, building and maintaining production web applications. Currently learning Flutter to expand into mobile development, and exploring full-stack capabilities with Prisma, PostgreSQL, and Node.js.
             </p>
             <div className="mt-3 flex items-center gap-2 text-[10px] md:mt-4 md:text-xs text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-              Building something new
+              Building production apps
             </div>
           </Card>
 
