@@ -30,7 +30,9 @@ export function Hero() {
       <Scene3DWrapper />
 
       <Container className="relative z-10 h-full">
-        <div className="grid h-full min-h-[70vh] items-center gap-8 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
+        <div className="relative h-full">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-0 hidden w-[60%] bg-gradient-to-r from-background/85 via-background/45 to-transparent lg:block" />
+          <div className="relative z-10 grid h-full min-h-[70vh] items-center gap-8 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
           {/* Left: Hero content */}
           <div className="order-2 lg:order-1">
             <motion.div
@@ -94,11 +96,12 @@ export function Hero() {
               </motion.div>
             </motion.div>
           </div>
-        </div>
+          </div>
 
-        {/* Avatar — center right */}
-        <div className="pointer-events-none absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block">
-          <Avatar />
+          {/* Avatar — center right */}
+          <div className="pointer-events-none absolute right-8 top-1/2 z-10 -translate-y-1/2 hidden lg:block">
+            <Avatar />
+          </div>
         </div>
       </Container>
     </section>
