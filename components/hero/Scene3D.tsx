@@ -249,7 +249,7 @@ function Sun() {
         <meshStandardMaterial
           color="#ffd700"
           emissive="#ffa500"
-          emissiveIntensity={2.5}
+          emissiveIntensity={1.2}
           roughness={0.15}
           metalness={0.1}
         />
@@ -257,17 +257,17 @@ function Sun() {
       {/* Inner glow */}
       <mesh ref={glowRef}>
         <sphereGeometry args={[1.9, 32, 32]} />
-        <meshBasicMaterial color="#ff8800" transparent opacity={0.18} side={THREE.BackSide} />
+        <meshBasicMaterial color="#ff8800" transparent opacity={0.1} side={THREE.BackSide} />
       </mesh>
       {/* Corona */}
       <mesh ref={coronaRef}>
         <sphereGeometry args={[2.6, 32, 32]} />
-        <meshBasicMaterial color="#ffaa33" transparent opacity={0.07} side={THREE.BackSide} />
+        <meshBasicMaterial color="#ffaa33" transparent opacity={0.05} side={THREE.BackSide} />
       </mesh>
       {/* Outer haze */}
       <mesh>
         <sphereGeometry args={[4, 32, 32]} />
-        <meshBasicMaterial color="#ff6600" transparent opacity={0.025} side={THREE.BackSide} />
+        <meshBasicMaterial color="#ff6600" transparent opacity={0.015} side={THREE.BackSide} />
       </mesh>
       {/* Light rays */}
       <group ref={raysRef}>
@@ -571,7 +571,7 @@ function SolarSystem() {
       <group rotation={[0.15, 0, 0.05]}>
         {/* Lighting */}
         <ambientLight intensity={0.1} />
-        <pointLight position={[0, 0, 0]} intensity={3} color="#ffe8b0" distance={65} decay={2} />
+        <pointLight position={[0, 0, 0]} intensity={1.1} color="#ffe8b0" distance={65} decay={2} />
         <pointLight position={[-14, 7, 12]} intensity={0.45} color="#b0c4ff" />
         <pointLight position={[14, -7, -12]} intensity={0.3} color="#ffd4a0" />
         <pointLight position={[0, 10, 0]} intensity={0.15} color="#aabbff" />
@@ -692,7 +692,7 @@ export function Scene3D() {
       camera={{ position: [2, 5, 22], fov: 48 }}
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      style={{ background: "transparent", position: "absolute", inset: 0, zIndex: 0 }}
+      style={{ background: "transparent", position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
     >
       <SolarSystem />
     </Canvas>

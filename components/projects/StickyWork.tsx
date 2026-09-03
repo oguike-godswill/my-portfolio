@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { ProjectVisual } from "./ProjectVisual";
 import { ProjectTextCard } from "./ProjectTextCard";
 import type { Project } from "@/lib/projects";
@@ -58,15 +59,15 @@ export function StickyWork({ projects }: { projects: Project[] }) {
         <div className="space-y-24 lg:hidden">
           {projects.map((project, i) => (
             <div key={project.slug}>
-              <div className="mb-8">
-                <div className="overflow-hidden rounded-[12px] border border-line bg-surface-2 p-5">
+              <Link href={`/work/${project.slug}`} className="mb-8 block">
+                <div className="overflow-hidden rounded-[12px] border border-line bg-surface-2 p-5 transition-colors duration-300 hover:border-accent">
                   <ProjectVisual
                     kind={project.slug}
                     accent={project.accent}
                     url={project.liveUrl?.replace("https://", "")}
                   />
                 </div>
-              </div>
+              </Link>
               <ProjectTextCard
                 project={project}
                 index={i}

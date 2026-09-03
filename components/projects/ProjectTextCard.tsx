@@ -2,9 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { Tag } from "@/components/ui/Tag";
-import { ArrowLink } from "@/components/ui/ArrowLink";
 import type { Project } from "@/lib/projects";
 
 export function ProjectTextCard({
@@ -33,9 +34,15 @@ export function ProjectTextCard({
         <span className="label text-muted">{project.category}</span>
       </div>
 
-      <h3 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-        {project.title}
-      </h3>
+      <Link
+        href={`/work/${project.slug}`}
+        className="group inline-block"
+        aria-label={`View case study for ${project.title}`}
+      >
+        <h3 className="font-display text-3xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent sm:text-4xl">
+          {project.title}
+        </h3>
+      </Link>
 
       <p className="mt-4 max-w-md text-base leading-relaxed text-secondary normal-case">
         {project.description}
@@ -47,17 +54,44 @@ export function ProjectTextCard({
         ))}
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center gap-6">
-        <ArrowLink href={`/work/${project.slug}`}>View Case Study</ArrowLink>
+      <div className="mt-8 flex flex-wrap items-center gap-4">
+        <Link
+          href={`/work/${project.slug}`}
+          className="group inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/40 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:text-accent"
+        >
+          View Case Study
+          <ArrowUpRight
+            size={16}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        </Link>
         {project.liveUrl && (
-          <ArrowLink href={project.liveUrl} external>
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/40 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:text-accent"
+          >
             Live Site
-          </ArrowLink>
+            <ArrowUpRight
+              size={16}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
         )}
         {project.githubUrl && (
-          <ArrowLink href={project.githubUrl} external>
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/40 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:text-accent"
+          >
             GitHub
-          </ArrowLink>
+            <ArrowUpRight
+              size={16}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
         )}
       </div>
     </div>

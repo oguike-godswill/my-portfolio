@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { GreetingBubble } from "./GreetingBubble";
 import { ClockWidget } from "./HeroExtras";
-import { Scene3DWrapper } from "./Scene3DWrapper";
+// import { Scene3DWrapper } from "./Scene3DWrapper";
 import { Avatar } from "./Avatar";
 import { site } from "@/lib/site";
 
@@ -26,15 +26,15 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen pt-24 pb-8 md:pt-32 md:pb-12">
-      {/* Fixed 3D Background */}
-      <Scene3DWrapper />
+      {/* Fixed 3D Background (commented out — solar system disabled) */}
+      {/* <Scene3DWrapper /> */}
 
-      <Container className="relative z-10 h-full">
+      <Container className="relative z-10 h-full px-4 sm:px-6">
         <div className="relative h-full">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-0 hidden w-[60%] bg-gradient-to-r from-background/85 via-background/45 to-transparent lg:block" />
-          <div className="relative z-10 grid h-full min-h-[70vh] items-center gap-8 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-0 bg-gradient-to-r from-background/85 via-background/45 to-transparent lg:w-[60%]" />
+          <div className="relative z-10 grid h-full min-h-[85vh] items-center justify-items-center gap-6 lg:grid-cols-[1fr_auto_1fr] lg:justify-items-stretch lg:gap-12">
           {/* Left: Hero content */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 w-full text-center lg:order-1 lg:w-auto lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export function Hero() {
               </p>
             </motion.div>
 
-            <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[0.9] tracking-tight">
+            <h1 className="font-display text-[clamp(3rem,13vw,6rem)] font-bold leading-[0.92] tracking-tight">
               <span className="block overflow-hidden">
                 <motion.span
                   initial={{ y: "100%" }}
@@ -78,7 +78,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-6 max-w-md text-lg leading-relaxed text-secondary"
+              className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-secondary sm:text-xl lg:mx-0"
             >
               Building fast, responsive web products with clean design.
             </motion.p>
@@ -95,10 +95,15 @@ export function Hero() {
                 </Button>
               </motion.div>
             </motion.div>
+
+            {/* Mobile avatar — fills empty hero space */}
+            <div className="mt-12 flex justify-center lg:hidden">
+              <Avatar />
+            </div>
           </div>
           </div>
 
-          {/* Avatar — center right */}
+          {/* Avatar — center right (desktop) */}
           <div className="pointer-events-none absolute right-8 top-1/2 z-10 -translate-y-1/2 hidden lg:block">
             <Avatar />
           </div>

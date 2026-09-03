@@ -5,6 +5,7 @@ import { Tag } from "@/components/ui/Tag";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { ContactCTA } from "@/components/contact/ContactCTA";
 import { projects, getProjectBySlug } from "@/lib/projects";
+import { ArrowUpRight } from "lucide-react";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -55,14 +56,32 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
               <div className="mt-8 flex flex-wrap gap-4">
                 {project.liveUrl && (
-                  <ArrowLink href={project.liveUrl} external>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/40 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:text-accent"
+                  >
                     Live Site
-                  </ArrowLink>
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </a>
                 )}
                 {project.githubUrl && (
-                  <ArrowLink href={project.githubUrl} external>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/40 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent hover:text-accent"
+                  >
                     GitHub
-                  </ArrowLink>
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </a>
                 )}
               </div>
             </div>
