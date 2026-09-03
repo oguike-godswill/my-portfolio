@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Inter, Instrument_Serif } from "next/font/google";
+import "./globals.css";
 import { Navbar } from "@/components/navigation/Navbar";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
