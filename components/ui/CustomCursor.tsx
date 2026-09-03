@@ -11,8 +11,8 @@ export function CustomCursor() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 500, damping: 28 });
-  const springY = useSpring(mouseY, { stiffness: 500, damping: 28 });
+  const springX = useSpring(mouseX, { stiffness: 1500, damping: 50 });
+  const springY = useSpring(mouseY, { stiffness: 1500, damping: 50 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
