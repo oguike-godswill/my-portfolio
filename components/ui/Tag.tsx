@@ -1,4 +1,4 @@
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 
 export function Tag({
   children,
@@ -10,8 +10,8 @@ export function Tag({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-secondary",
-        className
+        "inline-flex items-center rounded-full border border-border bg-surface px-3 py-1 font-mono text-xs text-fg-muted",
+        className,
       )}
     >
       {children}

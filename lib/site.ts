@@ -1,12 +1,25 @@
 export const site = {
-  name: "Oguike Godswill",
-  initials: "OG",
-  role: "Frontend Engineer",
-  location: "Lagos, Nigeria",
-  email: "Oguikegodswill@gmail.com",
-  portfolio: "https://oguikegodswill.vercel.app",
+  name: "Godswill Oguike",
+  initials: "GO",
+  role: "Frontend & App Developer",
+  headline: "I build web & mobile products that people actually use.",
+  intro:
+    "I'm Godswill Oguike — a frontend & app developer focused on React, Next.js, TypeScript, Node.js and Flutter.",
+  description:
+    "Frontend & app developer building polished web and mobile products with React, Next.js, TypeScript, Node.js and Flutter.",
+  email: "oguikegodswill@gmail.com",
+  url: "https://godswilloguike.com",
+  location: "Nigeria",
+  availability: "Available for frontend / app development opportunities",
   github: "https://github.com/oguike-godswill",
-  linkedin: "https://linkedin.com/in/oguikegodswill",
-  profile:
-    "Frontend Engineer building modern, responsive, and interactive web applications with a focus on clean interfaces and thoughtful user experiences. Experienced with JavaScript, TypeScript, React, Next.js, and Tailwind CSS, with hands-on experience integrating APIs, working with databases, and developing full-stack applications. Currently working professionally on production web applications across existing products and new projects.",
-};
+  linkedin: "https://linkedin.com/in/oguikegodswill/",
+} as const;
+
+export const navLinks = [
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/books", label: "Books" },
+  { href: "/resume", label: "Resume" },
+  { href: "/contact", label: "Contact" },
+] as const;

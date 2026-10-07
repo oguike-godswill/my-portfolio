@@ -1,112 +1,117 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Mail, User } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { GreetingBubble } from "./GreetingBubble";
-import { ClockWidget } from "./HeroExtras";
-// import { Scene3DWrapper } from "./Scene3DWrapper";
-import { Avatar } from "./Avatar";
+import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
-const accentWords = ["experiences", "interfaces", "products", "ideas"];
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
-  const reduceMotion = useReducedMotion();
-  const [wordIndex, setWordIndex] = useState(0);
+  const reduced = useReducedMotion();
+  const [hasAvatar, setHasAvatar] = useState(true);
 
-  useEffect(() => {
-    if (reduceMotion) return;
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % accentWords.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [reduceMotion]);
+  const item = (delay: number) => ({
+    initial: reduced ? false : { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, delay, ease },
+  });
 
   return (
-    <section className="relative min-h-screen pt-24 pb-8 md:pt-32 md:pb-12">
-      {/* Fixed 3D Background (commented out — solar system disabled) */}
-      {/* <Scene3DWrapper /> */}
+    <section className="relative overflow-hidden" aria-label="Introduction">
+      <div className="grid-pattern pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(ellipse_at_top,var(--bg),transparent_70%)]" />
 
-      <Container className="relative z-10 h-full px-4 sm:px-6">
-        <div className="relative h-full">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-0 bg-gradient-to-r from-background/85 via-background/45 to-transparent lg:w-[60%]" />
-          <div className="relative z-10 grid h-full min-h-[85vh] items-center justify-items-center gap-6 lg:grid-cols-[1fr_auto_1fr] lg:justify-items-stretch lg:gap-12">
-          {/* Left: Hero content */}
-          <div className="order-2 w-full text-center lg:order-1 lg:w-auto lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <p className="label mb-4 inline-flex items-center gap-2 text-secondary">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                {site.role}
-              </p>
-            </motion.div>
-
-            <h1 className="font-display text-[clamp(3rem,13vw,6rem)] font-bold leading-[0.92] tracking-tight">
-              <span className="block overflow-hidden">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-gradient-white"
-                >
-                  I build digital
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden" style={{ minHeight: "0.9em" }}>
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={accentWords[wordIndex]}
-                    initial={{ y: "100%", opacity: 0, rotateX: -20 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    exit={{ y: "-100%", opacity: 0, rotateX: 20 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="block text-gradient-accent"
-                    style={{ minWidth: "7.5ch" }}
-                  >
-                    {accentWords[wordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-            </h1>
-
+      <Container className="relative">
+        <div className="grid items-center gap-12 pb-16 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:pb-24 lg:pt-24">
+          <div className="flex flex-col justify-center">
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-secondary sm:text-xl lg:mx-0"
+              {...item(0)}
+              className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs text-fg-muted"
             >
-              Building fast, responsive web products with clean design.
+              <span
+                className="h-2 w-2 rounded-full bg-[var(--accent)]"
+                style={{ boxShadow: "0 0 0 3px var(--accent-soft)" }}
+                aria-hidden="true"
+              />
+              {site.availability}
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-8 flex flex-wrap gap-4"
+            <motion.h1
+              {...item(0.08)}
+              className="display-heading max-w-4xl text-[2.5rem] leading-[1.03] sm:text-6xl lg:text-[4.5rem]"
             >
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                <Button href="/contact" variant="secondary">
-                  Let&apos;s Talk
-                </Button>
-              </motion.div>
+              I build web &amp; mobile products that people{" "}
+              <span className="text-[var(--accent-text)]">actually use.</span>
+            </motion.h1>
+
+            <motion.p {...item(0.16)} className="muted mt-7 max-w-2xl text-base leading-relaxed sm:text-lg">
+              I&apos;m Godswill Oguike — a frontend &amp; app developer focused on React, Next.js,
+              TypeScript, Node.js and Flutter.
+            </motion.p>
+
+            <motion.div {...item(0.24)} className="mt-9 flex flex-wrap items-center gap-3">
+              <ButtonLink href="/work" size="lg">
+                View my work
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </ButtonLink>
+              <ButtonLink href="/contact" variant="secondary" size="lg">
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                Let&apos;s work together
+              </ButtonLink>
             </motion.div>
 
-            {/* Mobile avatar — fills empty hero space */}
-            <div className="mt-12 flex justify-center lg:hidden">
-              <Avatar />
-            </div>
-          </div>
+            <motion.dl
+              {...item(0.32)}
+              className="mt-14 grid max-w-2xl grid-cols-2 gap-x-6 gap-y-6 border-t border-border pt-8 sm:grid-cols-3"
+            >
+              <div>
+                <dt className="section-label">Focus</dt>
+                <dd className="mt-2 text-sm text-fg">Web &amp; mobile products</dd>
+              </div>
+              <div>
+                <dt className="section-label">Stack</dt>
+                <dd className="mt-2 text-sm text-fg">React · Next.js · Flutter</dd>
+              </div>
+              <div>
+                <dt className="section-label">Based in</dt>
+                <dd className="mt-2 text-sm text-fg">{site.location} · Remote friendly</dd>
+              </div>
+            </motion.dl>
           </div>
 
-          {/* Avatar — center right (desktop) */}
-          <div className="pointer-events-none absolute right-8 top-1/2 z-10 -translate-y-1/2 hidden lg:block">
-            <Avatar />
-          </div>
+          <motion.div {...item(0.2)} className="hidden lg:flex lg:justify-end">
+            <div className="relative h-[30rem] w-80 overflow-hidden rounded-3xl border border-border bg-[var(--surface)] xl:h-[34rem] xl:w-96">
+              {hasAvatar ? (
+                <Image
+                  src="/avatar.png"
+                  alt="Godswill Oguike"
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 384px, 320px"
+                  className="object-cover"
+                  onError={() => setHasAvatar(false)}
+                />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center gap-4">
+                  <div
+                    className="grid-pattern pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,var(--bg),transparent_75%)]"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="pointer-events-none absolute -inset-6 bg-[var(--accent-soft)] opacity-60 blur-3xl"
+                    aria-hidden="true"
+                  />
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-border-strong bg-[var(--bg)]">
+                    <User className="h-10 w-10 text-fg-subtle" aria-hidden="true" />
+                  </div>
+                  <span className="section-label relative">Photo</span>
+                </div>
+              )}
+            </div>
+          </motion.div>
         </div>
       </Container>
     </section>
