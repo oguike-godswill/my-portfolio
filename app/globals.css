@@ -4,34 +4,34 @@
 
 :root {
   --bg: #fafaf9;
-  --bg-subtle: #f4f4f2;
+  --bg-subtle: #f3f3f0;
   --surface: #ffffff;
-  --surface-hover: #f6f6f4;
-  --border: rgba(10, 10, 11, 0.1);
-  --border-strong: rgba(10, 10, 11, 0.2);
-  --fg: #0a0a0b;
+  --surface-hover: #f5f5f2;
+  --border: rgba(10, 10, 11, 0.09);
+  --border-strong: rgba(10, 10, 11, 0.18);
+  --fg: #09090b;
   --fg-muted: #52525b;
   --fg-subtle: #78716c;
   --accent: #ff8a3d;
   --accent-text: #c24e0d;
-  --accent-soft: rgba(255, 138, 61, 0.14);
-  --shadow-card: 0 1px 2px rgba(10, 10, 11, 0.04), 0 12px 32px -16px rgba(10, 10, 11, 0.18);
+  --accent-soft: rgba(255, 138, 61, 0.13);
+  --shadow-card: 0 1px 2px rgba(10, 10, 11, 0.04), 0 16px 36px -18px rgba(10, 10, 11, 0.12);
 }
 
 .dark {
-  --bg: #0a0a0b;
-  --bg-subtle: #0e0e10;
-  --surface: #131316;
-  --surface-hover: #17171b;
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.2);
-  --fg: #f4f4f5;
+  --bg: #08080a;
+  --bg-subtle: #0d0d10;
+  --surface: #121216;
+  --surface-hover: #17171d;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --fg: #f4f4f6;
   --fg-muted: #a1a1aa;
   --fg-subtle: #71717a;
   --accent: #ff8a3d;
-  --accent-text: #ffa163;
-  --accent-soft: rgba(255, 138, 61, 0.16);
-  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 24px 48px -32px rgba(0, 0, 0, 0.9);
+  --accent-text: #ffa266;
+  --accent-soft: rgba(255, 138, 61, 0.15);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 24px 48px -28px rgba(0, 0, 0, 0.85);
 }
 
 @theme inline {
@@ -69,7 +69,7 @@ body {
   color: var(--fg);
   font-family: var(--font-dmsans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
-  letter-spacing: 0.012em;
+  letter-spacing: 0.01em;
   overflow-x: hidden;
 }
 
@@ -86,7 +86,7 @@ body {
 
 .container-page {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1180px;
   margin-inline: auto;
   padding-inline: 20px;
 }
@@ -98,13 +98,13 @@ body {
 }
 
 .section {
-  padding-block: clamp(64px, 9vw, 128px);
+  padding-block: clamp(64px, 8.5vw, 120px);
 }
 
 .section-label {
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  letter-spacing: 0.14em;
+  font-size: 11.5px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--fg-subtle);
 }
@@ -112,8 +112,8 @@ body {
 .display-heading {
   font-family: var(--font-tiktok), var(--font-dmsans), ui-sans-serif, system-ui, sans-serif;
   font-weight: 600;
-  letter-spacing: -0.008em;
-  line-height: 1.08;
+  letter-spacing: -0.018em;
+  line-height: 1.06;
   text-wrap: balance;
   font-synthesis-weight: none;
 }
@@ -143,6 +143,30 @@ h3 {
   background-image: linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
