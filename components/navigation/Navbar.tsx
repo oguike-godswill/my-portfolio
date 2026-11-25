@@ -68,7 +68,7 @@ export function Navbar() {
           className="group inline-flex items-center gap-2.5 justify-self-start font-display text-[15px] font-semibold tracking-normal text-fg"
           aria-label={`${site.name} — home`}
         >
-          <span className=" relative flex h-7 w-7 items-center justify-center rounded-lg border border-border-strong bg-[var(--surface)] font-mono text-[11px] font-semibold text-fg transition-all duration-200 group-hover:border-[var(--accent)] group-hover:text-[var(--accent-text)]">
+          <span className="relative flex h-7 w-7 items-center justify-center rounded-lg border border-border-strong bg-[var(--surface)] font-mono text-[11px] font-semibold text-fg transition-colors duration-200 group-hover:border-[var(--accent)] group-hover:text-[var(--accent-text)]">
             {site.initials}
             <span
               className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-[var(--bg)]"
@@ -78,39 +78,34 @@ export function Navbar() {
           <span>Godswill</span>
         </Link>
 
-        <nav
-          className="hidden items-center justify-center md:flex"
-          aria-label="Primary"
-        >
-          <div className="inline-flex items-center gap-0.5 rounded-full border border-border bg-[var(--surface)]/80 p-1 backdrop-blur-md">
-            {navLinks.map((link) => {
-              const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "relative rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:text-[13px]",
-                    active ? "text-fg" : "text-fg-muted hover:text-fg",
-                  )}
-                >
-                  {active && (
-                    <motion.span
-                      layoutId="navbar-active-pill"
-                      className="absolute inset-0 -z-10 rounded-full border border-border-strong bg-[var(--bg)] shadow-xs"
-                      transition={
-                        reduced
-                          ? { duration: 0 }
-                          : { type: "spring", stiffness: 380, damping: 32 }
-                      }
-                    />
-                  )}
-                  {link.label}
-                </Link>
-              );
-            })}
-          </div>
+        <nav className="hidden items-center justify-center gap-1 md:flex" aria-label="Primary">
+          {navLinks.map((link) => {
+            const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative px-3.5 py-2 text-[13.5px] font-medium transition-colors duration-200",
+                  active ? "text-fg" : "text-fg-muted hover:text-fg",
+                )}
+              >
+                {link.label}
+                {active && (
+                  <motion.span
+                    layoutId="navbar-active-underline"
+                    className="absolute inset-x-3.5 bottom-0.5 h-0.5 bg-[var(--accent)]"
+                    transition={
+                      reduced
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 380, damping: 32 }
+                    }
+                  />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="col-start-3 flex items-center justify-end gap-2">
@@ -118,13 +113,13 @@ export function Navbar() {
             type="button"
             onClick={openCommandPalette}
             aria-label="Open command palette"
-            className="group inline-flex h-9 items-center gap-2 rounded-full border border-border bg-[var(--surface)] px-3 text-xs text-fg-muted transition-all hover:border-border-strong hover:text-fg"
+            className="group inline-flex h-9 items-center gap-2 rounded-lg border border-border bg-[var(--surface)] px-2.5 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
           >
-            <Command className="h-3.5 w-3.5 text-fg-subtle transition-colors group-hover:text-[var(--accent-text)]" aria-hidden="true" />
-            <span className="hidden sm:inline">Quick jump</span>
-            <kbd className="rounded border border-border bg-[var(--bg-subtle)] px-1.5 py-0.5 font-mono text-[10px] text-fg-subtle">
-              ⌘K
-            </kbd>
+            <Command
+              className="h-3.5 w-3.5 text-fg-subtle transition-colors group-hover:text-[var(--accent-text)]"
+              aria-hidden="true"
+            />
+            <kbd className="font-mono text-[10.5px] text-fg-subtle">⌘K</kbd>
           </button>
 
           <ThemeToggle />
@@ -135,7 +130,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-[var(--surface)] text-fg transition-colors hover:border-border-strong md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-[var(--surface)] text-fg transition-colors hover:border-border-strong md:hidden"
           >
             {open ? <X className="h-4 w-4" aria-hidden="true" /> : <Menu className="h-4 w-4" aria-hidden="true" />}
           </button>
@@ -193,15 +188,10 @@ export function Navbar() {
                   </Link>
                 );
               })}
-              <div className="mt-3 flex items-center justify-between border-t border-border px-3 pt-4 text-xs text-fg-muted">
-                <span className="flex items-center gap-2">
-                  <span
-                    className="h-2 w-2 shrink-0 rounded-full bg-emerald-500"
-                    aria-hidden="true"
-                  />
-                  {site.availability}
-                </span>
-              </div>
+              <p className="mt-3 flex items-center gap-2 border-t border-border px-3 pt-4 text-xs text-fg-muted">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500" aria-hidden="true" />
+                {site.availability}
+              </p>
             </nav>
           </motion.div>
         )}

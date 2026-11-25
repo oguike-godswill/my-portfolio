@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -78,16 +79,16 @@ export function CaseStudy({
         <Container className="relative">
           <Link
             href="/work"
-            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-[var(--surface)] px-3.5 py-1.5 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
+            className="inline-flex items-center gap-1.5 text-sm text-fg-muted transition-colors hover:text-fg"
           >
-            <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             All projects
           </Link>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <span className="section-label">{project.category}</span>
             <span className="h-1 w-1 rounded-full bg-[var(--fg-subtle)]" aria-hidden="true" />
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-[var(--surface)] px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
+            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-fg-subtle">
               <span
                 className={`h-1.5 w-1.5 rounded-full ${project.status === "live" ? "bg-emerald-500" : "bg-[var(--accent)]"}`}
                 aria-hidden="true"
@@ -110,16 +111,9 @@ export function CaseStudy({
 
           <p className="muted mt-5 max-w-2xl text-base leading-relaxed sm:text-lg">{project.tagline}</p>
 
-          <ul className="mt-7 flex flex-wrap gap-2" aria-label="Technologies used">
-            {project.technologies.map((tech) => (
-              <li
-                key={tech}
-                className="rounded-full border border-border bg-[var(--surface)] px-3 py-1 font-mono text-xs text-fg-muted"
-              >
-                {tech}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-6 font-mono text-xs leading-relaxed text-fg-subtle" aria-label="Technologies used">
+            {project.technologies.join(" · ")}
+          </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             {project.liveUrl ? (
@@ -151,6 +145,28 @@ export function CaseStudy({
               <ProjectCover variant={project.cover} />
             </div>
           </Reveal>
+
+          {project.gallery && project.gallery.length > 0 ? (
+            <Reveal delay={0.08} className="mt-8">
+              <p className="section-label mb-4">Product Screens</p>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {project.gallery.map((shot) => (
+                  <div
+                    key={shot.src}
+                    className="relative aspect-[9/19] overflow-hidden rounded-2xl border border-border bg-[var(--surface)]"
+                  >
+                    <Image
+                      src={shot.src}
+                      alt={shot.alt}
+                      fill
+                      sizes="(min-width: 640px) 25vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          ) : null}
         </Container>
       </header>
 
@@ -210,9 +226,7 @@ export function CaseStudy({
             <Block id="overview" label="01 · Context & Product" title="The Problem & Product Solution">
               <div className="grid gap-5 sm:grid-cols-2">
                 <SpotlightCard className="p-6">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-[var(--bg-subtle)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
-                    The Problem
-                  </span>
+                  <p className="section-label">The Problem</p>
                   <div className="mt-4 space-y-3">
                     {cs.problem.map((text) => (
                       <p key={text} className="text-sm leading-relaxed text-fg-muted">
@@ -223,10 +237,10 @@ export function CaseStudy({
                 </SpotlightCard>
 
                 <SpotlightCard className="p-6">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--accent-soft)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-[var(--accent-text)]">
+                  <p className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-[var(--accent-text)]">
                     <Sparkles className="h-3 w-3" aria-hidden="true" />
                     The Product Solution
-                  </span>
+                  </p>
                   <div className="mt-4 space-y-3">
                     {cs.product.map((text) => (
                       <p key={text} className="text-sm leading-relaxed text-fg">

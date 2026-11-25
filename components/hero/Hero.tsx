@@ -11,10 +11,8 @@ import {
   Copy,
   Globe,
   Layers,
-  MapPin,
   ShieldCheck,
   Smartphone,
-  Sparkles,
   User,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -73,7 +71,7 @@ export function Hero() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[28rem] w-[52rem] -translate-x-1/2 rounded-full bg-[var(--accent-soft)] opacity-55 blur-[130px]"
+        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[28rem] w-[52rem] -translate-x-1/2 rounded-full bg-[var(--accent-soft)] opacity-50 blur-[130px]"
         aria-hidden="true"
       />
 
@@ -81,20 +79,24 @@ export function Hero() {
         <div className="grid items-center gap-12 pb-16 pt-10 sm:pt-14 lg:grid-cols-[1.18fr_0.82fr] lg:gap-12 lg:pb-24 lg:pt-20">
           {/* Left Column: Editorial Statement */}
           <div className="flex flex-col justify-center">
-            <motion.div {...item(0)} className="mb-6 flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-border-strong bg-[var(--surface)]/90 px-3.5 py-1.5 text-xs text-fg backdrop-blur-md">
+            <motion.p
+              {...item(0)}
+              className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-fg-muted"
+            >
+              <span className="inline-flex items-center gap-2 text-fg">
                 <span className="relative flex h-2 w-2" aria-hidden="true">
                   <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                 </span>
                 {site.availability}
               </span>
-
-              <span className="hidden items-center gap-1.5 rounded-full border border-border bg-[var(--bg-subtle)] px-3 py-1.5 font-mono text-[11px] text-fg-subtle sm:inline-flex">
-                <MapPin className="h-3 w-3 text-[var(--accent-text)]" aria-hidden="true" />
+              <span className="text-fg-subtle" aria-hidden="true">
+                ·
+              </span>
+              <span className="text-fg-subtle">
                 {site.location} · {localTime}
               </span>
-            </motion.div>
+            </motion.p>
 
             <motion.h1
               {...item(0.08)}
@@ -123,16 +125,15 @@ export function Hero() {
               {...item(0.16)}
               className="muted mt-7 max-w-2xl text-base leading-relaxed sm:text-[17.5px]"
             >
-              I&apos;m <strong className="font-medium text-fg">Godswill Oguike</strong> — a frontend &amp; app
-              engineer crafting production interfaces and end-to-end systems with{" "}
-              <span className="text-fg">React, Next.js, TypeScript, Node.js</span> and{" "}
-              <span className="text-fg">Flutter</span>. Currently shipping product experiences at{" "}
-              <span className="underline decoration-border-strong underline-offset-4">ConnectNigeria</span>.
+              I&apos;m <strong className="font-medium text-fg">Godswill Oguike</strong> — a frontend &amp; mobile
+              product engineer crafting production web apps, offline-first mobile software, and AI-powered systems
+              with <span className="text-fg">React, Next.js, TypeScript, Node.js</span> and{" "}
+              <span className="text-fg">Flutter</span>.
             </motion.p>
 
-            <motion.div {...item(0.24)} className="mt-9 flex flex-wrap items-center gap-3">
+            <motion.div {...item(0.24)} className="mt-9 flex flex-wrap items-center gap-4">
               <ButtonLink href="/work" size="lg">
-                Explore selected work
+                Explore all work
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </ButtonLink>
               <ButtonLink href="/contact" variant="secondary" size="lg">
@@ -141,13 +142,13 @@ export function Hero() {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="group inline-flex h-12 items-center gap-2 rounded-full border border-border bg-[var(--surface)] px-4 font-mono text-xs text-fg-muted transition-all hover:border-border-strong hover:text-fg"
+                className="group inline-flex items-center gap-2 font-mono text-xs text-fg-muted transition-colors hover:text-fg"
                 aria-label={`Copy email address ${site.email}`}
               >
                 {copied ? (
                   <>
                     <Check className="h-3.5 w-3.5 text-emerald-500" aria-hidden="true" />
-                    <span className="text-emerald-500">Copied email!</span>
+                    <span className="text-emerald-500">Copied email</span>
                   </>
                 ) : (
                   <>
@@ -155,7 +156,9 @@ export function Hero() {
                       className="h-3.5 w-3.5 text-fg-subtle transition-colors group-hover:text-[var(--accent-text)]"
                       aria-hidden="true"
                     />
-                    <span>{site.email}</span>
+                    <span className="underline decoration-border-strong underline-offset-4">
+                      {site.email}
+                    </span>
                   </>
                 )}
               </button>
@@ -167,18 +170,18 @@ export function Hero() {
             >
               <div>
                 <dt className="section-label">Architecture</dt>
-                <dd className="mt-1.5 text-xs font-medium text-fg sm:text-sm">Web &amp; Mobile Apps</dd>
+                <dd className="mt-1.5 text-xs font-medium text-fg sm:text-sm">Web, Mobile &amp; AI</dd>
                 <p className="mt-0.5 font-mono text-[11px] text-fg-subtle">End-to-end ownership</p>
               </div>
               <div>
                 <dt className="section-label">Core Stack</dt>
                 <dd className="mt-1.5 text-xs font-medium text-fg sm:text-sm">Next.js · TS · Flutter</dd>
-                <p className="mt-0.5 font-mono text-[11px] text-fg-subtle">Node · Prisma · Postgres</p>
+                <p className="mt-0.5 font-mono text-[11px] text-fg-subtle">Node · Prisma · MongoDB</p>
               </div>
               <div>
-                <dt className="section-label">Track Record</dt>
-                <dd className="mt-1.5 text-xs font-medium text-fg sm:text-sm">5+ Products Shipped</dd>
-                <p className="mt-0.5 font-mono text-[11px] text-fg-subtle">Production &amp; SaaS</p>
+                <dt className="section-label">Portfolio</dt>
+                <dd className="mt-1.5 text-xs font-medium text-fg sm:text-sm">12 Products Built</dd>
+                <p className="mt-0.5 font-mono text-[11px] text-fg-subtle">SaaS · Commerce · Apps</p>
               </div>
             </motion.dl>
           </div>
@@ -207,25 +210,24 @@ export function Hero() {
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--accent-soft)] px-2.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-[var(--accent-text)]">
-                      <Sparkles className="h-2.5 w-2.5" aria-hidden="true" />
-                      Product Engineer
+                  <div className="flex items-center justify-between gap-2 font-mono text-[10.5px]">
+                    <span className="uppercase tracking-widest text-[var(--accent-text)]">
+                      Frontend &amp; App Engineer
                     </span>
-                    <span className="font-mono text-[11px] text-fg-subtle">{localTime}</span>
+                    <span className="text-fg-subtle">{localTime}</span>
                   </div>
-                  <h2 className="mt-2 truncate font-display text-lg font-semibold text-fg">
+                  <h2 className="mt-1.5 truncate font-display text-lg font-semibold text-fg">
                     {site.name}
                   </h2>
                   <p className="truncate text-xs text-fg-muted">
-                    Frontend Engineer at <span className="text-fg">ConnectNigeria</span>
+                    Building web platforms, Flutter apps &amp; AI systems
                   </p>
-                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <div className="mt-3 flex flex-wrap items-center gap-2 font-mono text-[11px]">
                     <Link
                       href="/about"
-                      className="inline-flex items-center gap-1 font-mono text-[11px] text-fg transition-colors hover:text-[var(--accent-text)]"
+                      className="inline-flex items-center gap-1 text-fg transition-colors hover:text-[var(--accent-text)]"
                     >
-                      Story &amp; background
+                      About
                       <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
                     </Link>
                     <span className="text-fg-subtle" aria-hidden="true">
@@ -233,10 +235,21 @@ export function Hero() {
                     </span>
                     <Link
                       href="/resume"
-                      className="inline-flex items-center gap-1 font-mono text-[11px] text-fg-muted transition-colors hover:text-fg"
+                      className="text-fg-muted transition-colors hover:text-fg"
                     >
                       Resume
                     </Link>
+                    <span className="text-fg-subtle" aria-hidden="true">
+                      ·
+                    </span>
+                    <a
+                      href={site.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-fg-muted transition-colors hover:text-fg"
+                    >
+                      GitHub
+                    </a>
                   </div>
                 </div>
               </div>
@@ -255,7 +268,7 @@ export function Hero() {
                 </div>
 
                 <div
-                  className="inline-flex rounded-full border border-border bg-[var(--bg-subtle)] p-0.5"
+                  className="inline-flex items-center gap-1 border border-border bg-[var(--bg-subtle)] p-0.5 rounded-lg"
                   role="tablist"
                   aria-label="Inspect platform craft"
                 >
@@ -265,14 +278,14 @@ export function Hero() {
                     aria-selected={mode === "web"}
                     onClick={() => setMode("web")}
                     className={cn(
-                      "inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] transition-all",
+                      "inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 font-mono text-[11px] transition-all",
                       mode === "web"
                         ? "bg-[var(--surface)] text-fg shadow-xs"
                         : "text-fg-muted hover:text-fg",
                     )}
                   >
                     <Globe className="h-3 w-3 text-[var(--accent-text)]" aria-hidden="true" />
-                    Web · Next.js
+                    Web
                   </button>
                   <button
                     type="button"
@@ -280,19 +293,19 @@ export function Hero() {
                     aria-selected={mode === "mobile"}
                     onClick={() => setMode("mobile")}
                     className={cn(
-                      "inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] transition-all",
+                      "inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 font-mono text-[11px] transition-all",
                       mode === "mobile"
                         ? "bg-[var(--surface)] text-fg shadow-xs"
                         : "text-fg-muted hover:text-fg",
                     )}
                   >
                     <Smartphone className="h-3 w-3 text-[var(--accent-text)]" aria-hidden="true" />
-                    App · Flutter
+                    Mobile
                   </button>
                 </div>
               </div>
 
-              <div className="mt-4 min-h-[195px]">
+              <div className="mt-4 min-h-[192px]">
                 <AnimatePresence mode="wait">
                   {mode === "web" ? (
                     <motion.div
@@ -315,9 +328,7 @@ export function Hero() {
                             Next.js App Router · Prisma · Stripe Webhook Guard
                           </p>
                         </div>
-                        <span className="rounded-md border border-border bg-[var(--surface)] px-2 py-1 font-mono text-xs font-semibold text-fg">
-                          $29.00
-                        </span>
+                        <span className="font-mono text-xs font-semibold text-fg">$29.00</span>
                       </div>
 
                       <div className="mt-4 grid grid-cols-3 gap-2 font-mono text-[10px]">
@@ -360,7 +371,7 @@ export function Hero() {
                           href="/work/molearn"
                           className="inline-flex items-center gap-1 font-mono text-[11px] text-fg-muted transition-colors hover:text-fg"
                         >
-                          Molearn case study
+                          Case study
                           <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
                         </Link>
                       </div>
@@ -386,29 +397,25 @@ export function Hero() {
                             Protected Route Guards · Persistent Session State
                           </p>
                         </div>
-                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] text-emerald-500">
-                          5:15 /km
-                        </span>
+                        <span className="font-mono text-[11px] text-emerald-500">5:15 /km</span>
                       </div>
 
                       <div className="mt-3.5 flex items-center justify-between rounded-lg border border-border bg-[var(--surface)] p-2.5">
                         <div className="flex items-center gap-2.5">
-                          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--accent-soft)] font-mono text-xs font-semibold text-[var(--accent-text)]">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent-soft)] font-mono text-xs font-semibold text-[var(--accent-text)]">
                             TK
                           </span>
                           <div>
                             <p className="text-xs font-medium text-fg">Tobi K. · 1.2 km away</p>
                             <p className="font-mono text-[10px] text-fg-subtle">
-                              Morning 8K · Victoria Island Loop
+                              Morning 8K · Protected Route
                             </p>
                           </div>
                         </div>
                         <span
                           className={cn(
-                            "rounded-full px-2 py-0.5 font-mono text-[10px]",
-                            runnerMatched
-                              ? "bg-emerald-500/15 text-emerald-500"
-                              : "bg-[var(--bg-subtle)] text-fg-subtle",
+                            "font-mono text-[10.5px]",
+                            runnerMatched ? "text-emerald-500" : "text-fg-subtle",
                           )}
                         >
                           {runnerMatched ? "Matched ✓" : "Online"}
@@ -433,7 +440,7 @@ export function Hero() {
                           href="/work/run-buddy-app"
                           className="inline-flex items-center gap-1 font-mono text-[11px] text-fg-muted transition-colors hover:text-fg"
                         >
-                          Run Buddy case study
+                          Case study
                           <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
                         </Link>
                       </div>

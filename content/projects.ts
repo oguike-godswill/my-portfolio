@@ -1,6 +1,18 @@
 export type ProjectStatus = "live" | "in-development" | "personal";
 
-export type CoverVariant = "marketplace" | "dashboard" | "mobile" | "auto" | "recipe" | "bot";
+export type CoverVariant =
+  | "marketplace"
+  | "cbt"
+  | "auction"
+  | "journal"
+  | "career"
+  | "commerce"
+  | "vault"
+  | "dashboard"
+  | "mobile"
+  | "auto"
+  | "recipe"
+  | "bot";
 
 export interface EngineeringNote {
   label: string;
@@ -39,6 +51,7 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   cover: CoverVariant;
+  gallery?: { src: string; alt: string }[];
   role: string;
   caseStudy: CaseStudy;
 }
@@ -138,12 +151,465 @@ export const projects: Project[] = [
       ],
       outcome: [
         "Molearn is live in production and continues to be developed, with the codebase open on GitHub.",
-        "It stands as the clearest example of my end-to-end product work: interface, authentication, payments and data model shipped as one working product.",
+        "It stands as a clear example of end-to-end product work: interface, authentication, payments and data model shipped as one working product.",
       ],
       lessons: [
         "Marketplace products live or die on role clarity — knowing exactly which screen belongs to which user removes entire categories of confusion.",
         "Doing payment and access control on the server from day one is far cheaper than retrofitting it later.",
         "Typed data contracts between the API and the UI catch a surprising share of bugs before they ever reach the browser.",
+      ],
+    },
+  },
+  {
+    slug: "naijaprep",
+    title: "NaijaPrep",
+    tagline: "Offline-first NERDC 9-3-4 Teaching Academy & Nigerian Exam CBT Simulator with AI tutoring.",
+    description:
+      "A Flutter mobile learning and computer-based testing simulator built for JAMB, WAEC and NECO students, powered by local Drift SQLite storage and Gemini AI explanations.",
+    category: "Mobile App",
+    status: "in-development",
+    featured: true,
+    year: "2026",
+    technologies: ["Flutter", "Dart", "Riverpod", "GoRouter", "Drift SQLite", "Gemini AI", "Express"],
+    githubUrl: "https://github.com/oguike-godswill/cbtApp",
+    cover: "cbt",
+    role: "End-to-end mobile architecture, offline-first database design, CBT exam engine and AI tutor backend.",
+    caseStudy: {
+      problem: [
+        "Students preparing for national exams (JAMB, WAEC, NECO) often face unreliable mobile connectivity, making purely cloud-dependent study apps frustrating during study sessions.",
+        "Existing past-question apps dump static answers without teaching the underlying NERDC curriculum concepts or simulating real timed CBT exam conditions.",
+      ],
+      product: [
+        "NaijaPrep combines a structured NERDC 9-3-4 teaching academy with a realistic timed Computer-Based Test (CBT) simulator in a single offline-first mobile app.",
+        "Students can study and take full timed mock exams offline using local SQLite persistence, then request step-by-step AI explanations powered by Gemini when connected.",
+      ],
+      features: [
+        "Offline-first curriculum and question bank persisted locally with Drift SQLite",
+        "Timed CBT exam simulator with question palette, flagging and instant scoring",
+        "Subject-by-subject NERDC 9-3-4 study modules",
+        "AI-powered step-by-step explanations via Express + Google Gemini API",
+        "Reactive state management with Riverpod and declarative routing via GoRouter",
+        "Performance tracking across mock exams and weak-topic diagnostics",
+      ],
+      design: [
+        "Exam screens eliminate distractions: a clean question canvas, clear countdown timer, and thumb-reachable navigation between questions.",
+        "Review mode contrasts selected answers against correct solutions with expandable explanations so learning happens immediately after submission.",
+      ],
+      engineering: [
+        {
+          label: "Offline-First Data",
+          body: "Drift (SQLite) stores curriculum lessons, question banks and user exam attempts locally so full mock exams run with zero network latency.",
+        },
+        {
+          label: "State & Navigation",
+          body: "Flutter Riverpod manages exam timers, active selections and study progress predictably, paired with GoRouter for structured deep linking.",
+        },
+        {
+          label: "AI Tutor Service",
+          body: "A lightweight Node.js / Express service wraps the @google/genai SDK to generate curriculum-aligned explanations without exposing API keys in the mobile binary.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Keeping timed CBT sessions reliable even if the student loses signal or backgrounds the app.",
+          solution:
+            "Persisted exam state and answers directly to Drift SQLite on every selection so sessions resume cleanly with zero lost progress.",
+        },
+        {
+          challenge: "Keeping AI explanations fast, accurate and safe from prompt injection.",
+          solution:
+            "Routed all Gemini calls through a server-side Express proxy with structured system instructions scoped strictly to the question context.",
+        },
+      ],
+      responsive: [
+        "Built for a wide range of Android and iOS screen densities, including compact budget phones common among students.",
+        "Large touch targets on option cards and question-grid drawers prevent mis-taps during timed exams.",
+      ],
+      performance: [
+        "Local SQLite queries render question transitions instantaneously.",
+        "Lazy-loaded study modules keep startup time fast and memory usage low.",
+      ],
+      outcome: [
+        "NaijaPrep demonstrates production offline-first mobile engineering combining Flutter, Drift SQLite and a secure AI backend.",
+      ],
+      lessons: [
+        "Offline-first architecture isn't just a caching layer — designing local persistence as the primary source of truth simplifies the entire UI.",
+        "Proxying AI models through a thin backend protects credentials and lets you iterate on prompts without shipping a new app binary.",
+      ],
+    },
+  },
+  {
+    slug: "solis",
+    title: "Solis",
+    tagline: "A museum collection and live art auction mobile app with race-safe atomic bidding and secure token rotation.",
+    description:
+      "A full-stack Flutter and Node.js museum & auction platform featuring live lot bidding, exhibition event bookings, and hardened JWT refresh-token rotation.",
+    category: "Mobile App",
+    status: "personal",
+    featured: true,
+    year: "2026",
+    technologies: ["Flutter", "Dart", "Node.js", "Express", "MongoDB", "JWT Rotation", "Zod"],
+    githubUrl: "https://github.com/oguike-godswill/artapp",
+    cover: "auction",
+    role: "Full-stack architecture — Flutter client UI, Express + MongoDB API, atomic bidding engine and security layer.",
+    caseStudy: {
+      problem: [
+        "Live auction apps fail hard when concurrent bids collide or when mobile auth tokens are stored insecurely and expire mid-auction.",
+        "Collectors and museum visitors need a calm, editorial mobile experience that still handles real-time bidding integrity and capacity-limited event bookings.",
+      ],
+      product: [
+        "Solis pairs a curated Flutter mobile client with a hardened Node.js + MongoDB backend for discovering artworks, placing live bids, and booking museum exhibitions.",
+        "Every bid is processed atomically on the server, while mobile sessions stay seamless through Keychain/Keystore storage and single-flight token refresh.",
+      ],
+      features: [
+        "Discover feed with featured live lots and auction carousel",
+        "Collection bento browser with series, exhibition, saved filter and search",
+        "Lot detail view with atomic race-safe bidding (+$100 / $250 / $500) and live bid history",
+        "Events week strip with capacity-checked booking management",
+        "Profile hub tracking leading, outbid and won bids alongside bookings and saved works",
+        "Short-lived JWT access tokens + rotating 30-day opaque refresh tokens with reuse detection",
+      ],
+      design: [
+        "Gallery-first editorial design where artwork photography breathes on quiet surfaces and bidding controls remain unmistakable.",
+        "Clear bid status indicators (Leading, Outbid, Won) let collectors read their standing at a glance.",
+      ],
+      engineering: [
+        {
+          label: "Hardened Auth",
+          body: "bcrypt (12 rounds) hashing, 15-minute JWT access tokens, and 30-day opaque refresh tokens stored hashed in MongoDB. Replayed tokens trigger automatic family revocation.",
+        },
+        {
+          label: "Mobile Security",
+          body: "Tokens are persisted in Keychain/Keystore via flutter_secure_storage with a single-flight interceptor that transparently refreshes on 401.",
+        },
+        {
+          label: "Atomic Bidding API",
+          body: "Express + MongoDB endpoints validate increments with Zod and enforce race-safe atomic updates so concurrent bids never overwrite a higher offer.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Preventing race conditions when two collectors bid on the same lot simultaneously.",
+          solution:
+            "Used atomic conditional database updates verifying the current highest bid before committing, rejecting stale bids cleanly with updated lot state.",
+        },
+        {
+          challenge: "Handling expired access tokens gracefully when multiple API requests fire concurrently.",
+          solution:
+            "Implemented single-flight refresh locking in the Flutter HTTP client so parallel 401s await a single refresh call instead of triggering false reuse revocations.",
+        },
+      ],
+      responsive: [
+        "Designed for one-handed gallery browsing and rapid bidding across iOS and Android devices.",
+      ],
+      performance: [
+        "Rate-limited auth endpoints, Helmet headers and indexed MongoDB queries keep API responses crisp under load.",
+      ],
+      outcome: [
+        "Solis showcases production-grade mobile security and backend concurrency engineering across Flutter and Node.js.",
+      ],
+      lessons: [
+        "Refresh-token rotation requires single-flight client coordination — otherwise concurrent requests will look like token replay.",
+        "Atomic conditional writes eliminate entire classes of financial and bidding race conditions.",
+      ],
+    },
+  },
+  {
+    slug: "verso",
+    title: "Verso",
+    tagline: "A quiet mobile exhibit for poems, journals, and letters — with ambient soundscapes and voice narration.",
+    description:
+      "A calm, editorial Flutter journaling and literary reading app backed by Neon PostgreSQL, pairing Newsreader typography with text-to-speech narration and ambient soundscapes.",
+    category: "Mobile App",
+    status: "personal",
+    featured: true,
+    year: "2026",
+    technologies: ["Flutter", "Dart", "Neon PostgreSQL", "Flutter TTS", "Ambient Audio", "Editorial UI"],
+    githubUrl: "https://github.com/oguike-godswill/verso_app",
+    cover: "journal",
+    gallery: [
+      { src: "/projects/verso/screen-1.jpg", alt: "Verso app exhibit reading interface" },
+      { src: "/projects/verso/screen-2.jpg", alt: "Verso app journal and poetry view" },
+      { src: "/projects/verso/screen-3.jpg", alt: "Verso app writing studio screen" },
+      { src: "/projects/verso/screen-4.jpg", alt: "Verso app personal shelf and profile" },
+    ],
+    role: "Product design, Flutter UI architecture, Neon PostgreSQL integration, TTS narration and ambient soundscape layer.",
+    caseStudy: {
+      problem: [
+        "Most writing and journaling apps feel like noisy social feeds or clinical note-taking utilities, leaving little room for quiet reflection, poetry, and long-form letters.",
+        "Readers who enjoy literary writing on mobile rarely get print-grade typography paired with optional audio narration and calm atmosphere.",
+      ],
+      product: [
+        "Verso is designed as a quiet digital exhibit for poems, personal journals, and letters.",
+        "Writers compose and publish pieces to a calm reading gallery, curate their personal shelf, and listen to works read aloud via built-in text-to-speech and ambient soundscapes.",
+      ],
+      features: [
+        "Editorial reading exhibit for poems, journals, and letters",
+        "Distraction-free writing and publishing studio",
+        "Personal shelf for organizing saved works and drafts",
+        "Built-in text-to-speech narration powered by flutter_tts",
+        "Optional ambient soundscape engine for focused reading and writing",
+        "Cloud persistence backed by Neon PostgreSQL with user accounts and profiles",
+      ],
+      design: [
+        "Print-inspired typography pairing Newsreader (regular and italic) for literary prose with Manrope for clean UI controls.",
+        "Generous whitespace, muted gallery surfaces, and restrained interactions keep the focus entirely on the written word.",
+      ],
+      engineering: [
+        {
+          label: "Flutter Client",
+          body: "Structured screen architecture (welcome, auth, exhibit, poem reader, write, publish, shelf, profile) with custom editorial theming and bundled font families.",
+        },
+        {
+          label: "Database",
+          body: "Neon PostgreSQL data layer handling accounts, published pieces, shelves, and local storage persistence.",
+        },
+        {
+          label: "Audio & TTS",
+          body: "Integrated flutter_tts narration alongside a dedicated soundscape controller so readers can listen hands-free.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Making long-form literary reading feel like a quiet book rather than a standard mobile app.",
+          solution:
+            "Tuned line heights, serif italic accents (Newsreader), and low-contrast chrome so every screen reads like a printed chapbook.",
+        },
+        {
+          challenge: "Coordinating text-to-speech playback cleanly with navigation and ambient audio.",
+          solution:
+            "Centralised playback and audio state management so narration pauses cleanly on screen transitions and never overlaps.",
+        },
+      ],
+      responsive: [
+        "Tuned for comfortable one-handed mobile reading and extended writing sessions across phone and tablet screens.",
+      ],
+      performance: [
+        "Bundled local font assets eliminate font flash, and lightweight widget trees keep scrolling silky across long poems and journal entries.",
+      ],
+      outcome: [
+        "Verso stands out as an atmospheric, typography-driven Flutter product combining cloud persistence with audio craft.",
+      ],
+      lessons: [
+        "Restraint is harder than adding features — removing visual noise made the writing and reading experience feel genuinely calm.",
+        "Pairing typography with subtle audio (TTS + soundscape) transforms how users engage with long-form mobile content.",
+      ],
+    },
+  },
+  {
+    slug: "career-relay",
+    title: "CareerRelay",
+    tagline: "An autopilot job scout, batch applier and email feedback hub powered by Playwright and Gemini AI.",
+    description:
+      "A full-stack automation platform that discovers relevant roles, assists with tailored batch applications via Playwright, and tracks recruiter replies over IMAP.",
+    category: "Automation / AI",
+    status: "personal",
+    featured: true,
+    year: "2026",
+    technologies: ["React", "TypeScript", "Express", "MongoDB", "Playwright", "Gemini AI", "Nodemailer", "ImapFlow"],
+    githubUrl: "https://github.com/oguike-godswill/jobfinder",
+    cover: "career",
+    role: "Full-stack engineering — React dashboard, Express server, Playwright automation, IMAP/SMTP pipeline and Gemini AI integration.",
+    caseStudy: {
+      problem: [
+        "Job searching involves hours of repetitive portal scanning, copy-pasting profile details, and digging through cluttered email inboxes to track application status.",
+        "Standard trackers require manual updates every time a recruiter replies or sends an interview invite.",
+      ],
+      product: [
+        "CareerRelay brings job scouting, assisted batch applying, and automatic inbox feedback tracking into a single workspace.",
+        "It uses Playwright for browser-assisted workflows, Gemini AI to evaluate role fit and draft tailored outreach, and ImapFlow + Nodemailer to sync application replies automatically.",
+      ],
+      features: [
+        "Automated job scouting and structured role queue persisted in MongoDB",
+        "AI-assisted role matching and tailored application drafting via Google Gemini",
+        "Playwright-powered batch application workflow",
+        "IMAP inbox polling (ImapFlow) to detect recruiter responses and status updates",
+        "SMTP outreach dispatch via Nodemailer",
+        "Unified React 19 dashboard for tracking pipeline stages and feedback",
+      ],
+      design: [
+        "Built as a focused operational command center: clear pipeline statuses, scannable role cards, and immediate visibility into what needs human review.",
+      ],
+      engineering: [
+        {
+          label: "Frontend",
+          body: "React 19 + TypeScript built with Vite for a fast, reactive workspace managing job queues, drafts and email threads.",
+        },
+        {
+          label: "Automation Engine",
+          body: "Playwright-core automates repetitive browser interactions while keeping user review checkpoints intact.",
+        },
+        {
+          label: "Mail & AI Pipeline",
+          body: "Express orchestrates MongoDB persistence, ImapFlow inbox ingestion, Nodemailer dispatch, and @google/genai classification.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Correlating unstructured recruiter emails back to specific job applications.",
+          solution:
+            "Combined ImapFlow thread metadata with Gemini AI classification to categorize replies (interview, follow-up, rejection) and attach them to the right MongoDB record.",
+        },
+        {
+          challenge: "Keeping long-running Playwright and email sync jobs from blocking the API server.",
+          solution:
+            "Isolated automation runs into asynchronous worker flows that stream status updates back to the React dashboard.",
+        },
+      ],
+      responsive: [
+        "Desktop-first productivity workspace that collapses cleanly to mobile screens for checking recruiter updates on the go.",
+      ],
+      performance: [
+        "MongoDB indexing on job status and timestamps keeps queue filtering instant even across hundreds of tracked roles.",
+      ],
+      outcome: [
+        "CareerRelay demonstrates deep full-stack and browser-automation engineering beyond standard CRUD applications.",
+      ],
+      lessons: [
+        "Human-in-the-loop automation beats blind automation — surfacing AI drafts for quick approval keeps quality high.",
+        "Integrating IMAP and browser automation requires defensive error handling for flaky networks and changing markup.",
+      ],
+    },
+  },
+  {
+    slug: "mensah-hairline",
+    title: "Mensah Hairline",
+    tagline: "Luxury virgin hair e-commerce storefront and salon studio booking platform built for a Lagos beauty brand.",
+    description:
+      "A high-craft Next.js storefront for handcrafted human hair wigs, bespoke frontals, and salon styling appointments backed by Supabase.",
+    category: "E-Commerce",
+    status: "live",
+    featured: true,
+    year: "2026",
+    technologies: ["Next.js", "TypeScript", "Supabase", "TanStack Query", "Zustand", "Framer Motion", "Tailwind CSS"],
+    liveUrl: "https://mensahhariline.vercel.app",
+    githubUrl: "https://github.com/oguike-godswill/mensah_hariline",
+    cover: "commerce",
+    role: "Design implementation, frontend architecture, Supabase integration, cart state and motion polish.",
+    caseStudy: {
+      problem: [
+        "Luxury beauty brands often lose credibility when forced into generic e-commerce templates that feel cluttered or slow on mobile networks.",
+        "Customers shopping for high-ticket wigs and salon installations need clear product presentation, smooth variant selection, and direct studio booking.",
+      ],
+      product: [
+        "Mensah Hairline is a bespoke digital storefront and booking experience designed to reflect a luxury salon brand.",
+        "Shoppers browse curated wig collections, manage cart state effortlessly, and connect directly with the studio for installations and revamps.",
+      ],
+      features: [
+        "Curated luxury product catalogue with variant and length selection",
+        "Persistent shopping cart powered by Zustand",
+        "Server-state synchronization and caching via TanStack Query and Supabase",
+        "Fluid page and drawer transitions with Framer Motion",
+        "Direct WhatsApp concierge and salon booking integration",
+        "SEO-optimised metadata and OpenGraph configuration",
+      ],
+      design: [
+        "Editorial luxury aesthetic using refined typography (Inter + Manrope), generous whitespace, and imagery-led product cards.",
+        "Subtle Framer Motion transitions elevate interactions without slowing down checkout.",
+      ],
+      engineering: [
+        {
+          label: "Framework",
+          body: "Next.js 16 App Router and React 19 with TypeScript, delivering fast server-rendered landing and collection pages.",
+        },
+        {
+          label: "Backend & Data",
+          body: "Supabase (@supabase/ssr) provides product persistence, auth and studio data, cached on the client with TanStack Query.",
+        },
+        {
+          label: "Client State",
+          body: "Zustand handles lightweight cart and drawer state with minimal re-renders.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Balancing rich high-resolution imagery and animations with fast mobile load times.",
+          solution:
+            "Combined Next.js image optimization, lazy loading, and lightweight GPU-composited Framer Motion transitions.",
+        },
+      ],
+      responsive: [
+        "Built mobile-first for Instagram and WhatsApp traffic where over 80% of luxury beauty shoppers browse on phones.",
+      ],
+      performance: [
+        "TanStack Query caching eliminates redundant Supabase fetches during collection browsing.",
+      ],
+      outcome: [
+        "Live in production at mensahhariline.vercel.app, delivering a polished brand-first e-commerce experience.",
+      ],
+      lessons: [
+        "In luxury e-commerce, pacing, whitespace and perceived speed directly drive buyer trust.",
+        "Separating server cache (TanStack Query) from UI state (Zustand) keeps commerce codebases clean.",
+      ],
+    },
+  },
+  {
+    slug: "titanvaultpro",
+    title: "TitanVaultPro",
+    tagline: "A watch-to-earn and fixed-ROI investment platform with wallet ledgers, cron settlements and admin controls.",
+    description:
+      "A full-stack Next.js and MongoDB financial platform where users earn wallet balance from sponsored video tasks and allocate funds into maturity-based investment plans.",
+    category: "Finance Product",
+    status: "personal",
+    featured: true,
+    year: "2026",
+    technologies: ["Next.js", "TypeScript", "MongoDB", "Mongoose", "NextAuth v5", "Zod", "Tailwind CSS"],
+    githubUrl: "https://github.com/oguike-godswill/titanvaultpro",
+    cover: "vault",
+    role: "Full-stack architecture — Next.js App Router, Mongoose schemas, NextAuth v5, cron settlement API and admin dashboard.",
+    caseStudy: {
+      problem: [
+        "Reward and investment platforms require strict server-side accounting: wallet balances, task credits, maturity payouts and withdrawals must stay consistent and auditable.",
+        "Admins also need operational visibility to configure plans, review withdrawals and manage tasks without touching the database directly.",
+      ],
+      product: [
+        "TitanVaultPro combines a user-facing earning and investment portal with an administrative control center.",
+        "Users complete sponsored video tasks to build wallet balance, subscribe to fixed-return plans, and receive automated principal + profit settlements at maturity.",
+      ],
+      features: [
+        "Credential authentication with NextAuth v5 and bcryptjs hashing",
+        "Sponsored video task completion with server-verified wallet crediting",
+        "Fixed-ROI investment plans with maturity tracking",
+        "Secret-protected cron settlement endpoint (POST /api/cron/settle)",
+        "Withdrawal requests with configurable minimums and fee calculation",
+        "Admin panel for managing plans, tasks, settings and user payouts",
+      ],
+      design: [
+        "Clean financial UI highlighting available balance, active plans, maturity countdowns and transaction history.",
+      ],
+      engineering: [
+        {
+          label: "App Architecture",
+          body: "Next.js 16 App Router with dynamic per-request session resolution and strict Zod validation on all mutations.",
+        },
+        {
+          label: "Database",
+          body: "MongoDB with Mongoose models for users, wallets, tasks, investment positions, withdrawals and ledger entries.",
+        },
+        {
+          label: "Settlements",
+          body: "Protected cron API route settles matured positions idempotently so payouts cannot be double-credited.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Preventing duplicate payouts or balance drift when settlement jobs run repeatedly.",
+          solution:
+            "Designed idempotent settlement queries gated by maturity timestamp and status flags inside the cron handler.",
+        },
+      ],
+      responsive: [
+        "Responsive dashboard tables and wallet cards adapted cleanly for mobile users checking earnings on the move.",
+      ],
+      performance: [
+        "Server-rendered account views avoid client-side loading waterfalls on sensitive financial data.",
+      ],
+      outcome: [
+        "Complete full-stack financial workflow with seeded demo environment, automated settlements and role-based admin controls.",
+      ],
+      lessons: [
+        "Idempotency is mandatory for any cron-driven financial settlement endpoint.",
+        "Separating user ledger entries from cached balances makes auditing and debugging straightforward.",
       ],
     },
   },
@@ -223,7 +689,7 @@ export const projects: Project[] = [
       ],
       outcome: [
         "PocketGuard is currently in active development; the public repository reflects the work in progress.",
-        "It is my strongest example of product thinking applied to a data-heavy interface.",
+        "It is a focused example of product thinking applied to a data-heavy interface.",
       ],
       lessons: [
         "In finance products, trust is a design feature — clear validation, honest states and readable numbers matter as much as visuals.",
@@ -241,6 +707,7 @@ export const projects: Project[] = [
     category: "Mobile App",
     status: "in-development",
     featured: true,
+    year: "2026",
     technologies: ["Flutter", "Dart", "Mobile UI", "Auth", "State Management"],
     cover: "mobile",
     role: "Mobile development: navigation architecture, authentication flows, runner discovery and the connection flow.",
@@ -307,7 +774,6 @@ export const projects: Project[] = [
       ],
       outcome: [
         "The app is in active development, with the core journey — account handling, discovery and connecting with other runners — built first.",
-        "It is the mobile half of my product work: where Molearn and PocketGuard prove the web side, Run Buddy proves the Flutter side.",
       ],
       lessons: [
         "A connection product is only as good as its first introduction — the path up to connecting has to feel safe, short and obvious.",
@@ -325,6 +791,7 @@ export const projects: Project[] = [
     category: "Business Website",
     status: "live",
     featured: true,
+    year: "2025",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Responsive UI", "SEO"],
     liveUrl: "https://legitautomobile.com",
     cover: "auto",
@@ -387,7 +854,7 @@ export const projects: Project[] = [
       ],
       outcome: [
         "Legit Autos is live in production at legitautomobile.com as a complete, business-facing website.",
-        "It demonstrates that I can ship a polished site for a real business, not just personal projects.",
+        "It demonstrates shipping a polished, high-trust site for a real business.",
       ],
       lessons: [
         "For business sites, credibility is the feature: consistency in spacing, type and imagery does more for trust than any effect.",
@@ -402,9 +869,10 @@ export const projects: Project[] = [
     tagline: "A cooking web application that helps users discover dishes and learn how to prepare them.",
     description:
       "A cooking web app for discovering dishes and following cooking instructions, built as a fast single-page experience.",
-    category: "Cooking Web App",
+    category: "Web App",
     status: "live",
     featured: true,
+    year: "2025",
     technologies: ["React", "Vite", "JavaScript", "REST API", "Responsive UI"],
     liveUrl: "https://tastybitsz.vercel.app",
     cover: "recipe",
@@ -466,7 +934,7 @@ export const projects: Project[] = [
       ],
       outcome: [
         "TastyBits is live in production and available to use at tastybitsz.vercel.app.",
-        "It shows my ability to build and ship a clean API-driven frontend application.",
+        "It shows the ability to build and ship a clean API-driven frontend application.",
       ],
       lessons: [
         "Handling loading and empty states properly is what separates a demo from a product — users notice absence more than decoration.",
@@ -481,9 +949,10 @@ export const projects: Project[] = [
     tagline: "An AI-powered messaging responder that processes and replies to WhatsApp and Telegram messages automatically.",
     description:
       "A Node.js automation system that listens for incoming WhatsApp and Telegram messages and responds using AI.",
-    category: "Automation / Backend",
+    category: "Automation / AI",
     status: "personal",
-    featured: false,
+    featured: true,
+    year: "2025",
     technologies: ["Node.js", "Baileys", "OpenAI", "Telegram Bot API", "Event Handling"],
     cover: "bot",
     role: "Backend engineering — messaging integrations, AI pipeline, event handling and automation logic.",
@@ -538,7 +1007,7 @@ export const projects: Project[] = [
         },
       ],
       responsive: [
-        "Not applicable in the traditional sense — the system works across whatever messaging apps and devices the participants are already using.",
+        "Works across whatever messaging apps and devices participants are already using.",
       ],
       performance: [
         "Message handling is asynchronous, so one slow AI call never stalls the connection or other conversations.",

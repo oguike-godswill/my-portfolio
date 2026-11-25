@@ -53,9 +53,9 @@ export default function AboutPage() {
                   behind them: APIs, authentication, data and validation.
                 </p>
                 <p>
-                  My day job is product work at ConnectNigeria, where I maintain and extend a live platform.
-                  Outside of it, I design and ship my own products — an education platform, a finance planning
-                  tool, a mobile app — which is where I get to own every decision from data model to pixels.
+                  I build across the full product surface — from marketplaces, luxury e-commerce storefronts
+                  and financial dashboards to offline-first Flutter apps, live auction engines and AI automation
+                  pipelines — owning decisions from data modelling and security to pixels.
                 </p>
                 <p>
                   AI is part of how I work: ChatGPT and Gemini for research and planning, coding agents like
@@ -178,16 +178,9 @@ export default function AboutPage() {
                 {skillGroups.map((group) => (
                   <div key={group.label}>
                     <h3 className="text-sm font-medium text-fg">{group.label}</h3>
-                    <ul className="mt-2.5 flex flex-wrap gap-1.5">
-                      {group.items.map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-full border border-border px-2.5 py-1 font-mono text-[11px] text-fg-muted"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="mt-1.5 font-mono text-xs leading-relaxed text-fg-muted">
+                      {group.items.join(" · ")}
+                    </p>
                   </div>
                 ))}
               </div>

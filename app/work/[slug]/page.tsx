@@ -16,6 +16,13 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return { title: "Project not found" };
 
+  const ogUrl = `/api/og?${new URLSearchParams({
+    title: project.title,
+    subtitle: project.tagline,
+    tag: `CASE STUDY · ${project.category}`,
+    path: `godswilloguike.com/work/${project.slug}`,
+  }).toString()}`;
+
   return {
     title: project.title,
     description: project.tagline,
@@ -25,6 +32,13 @@ export async function generateMetadata({
       description: project.tagline,
       type: "article",
       url: `/work/${project.slug}`,
+      images: [{ url: ogUrl, width: 1200, height: 630, alt: project.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — ${project.category}`,
+      description: project.tagline,
+      images: [ogUrl],
     },
   };
 }

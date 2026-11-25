@@ -19,6 +19,358 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    slug: "quiet-consistency-beats-loud-motivation",
+    title: "Why quiet consistency beats loud motivation",
+    description:
+      "Motivation feels good for a weekend, but ordinary daily habits are what actually change your skills and your life.",
+    date: "2026-11-18",
+    tags: ["Life", "Discipline", "Mindset"],
+    blocks: [
+      {
+        type: "p",
+        text: "There is a version of ambition that looks great online. Big announcements, late night declarations, fresh notebooks, and a burst of energy that lasts about four days. I used to rely on that feeling a lot. Whenever I felt inspired, I could code for ten hours straight. Whenever the feeling faded, days would pass without a single commit.",
+      },
+      { type: "h2", text: "The trap of waiting to feel ready" },
+      {
+        type: "p",
+        text: "Motivation is unreliable because it depends on your mood, your sleep, the weather, and whatever happened to you that morning. If your progress requires you to feel excited before you open your laptop, you will only move forward on good days. Most days in real life are just ordinary days.",
+      },
+      {
+        type: "p",
+        text: "Reading Daniel Walter on discipline made something click for me. Discipline is not about being harsh with yourself. It is simply deciding in advance that you will show up for an hour even when the work feels boring, slow, or slightly frustrating.",
+      },
+      { type: "h2", text: "Small sessions add up faster than heroic ones" },
+      {
+        type: "ul",
+        items: [
+          "Two focused hours every day will outperform one twelve hour sprint every other week.",
+          "Stopping while you still have a little energy left makes it much easier to return tomorrow.",
+          "Keeping your promises to yourself in private builds a quiet confidence nobody can take from you.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Nobody sees the Tuesday evening when you fixed one stubborn bug and read twenty pages before bed, yet those evenings quietly build your entire future.",
+      },
+      { type: "h2", text: "What works for me now" },
+      {
+        type: "p",
+        text: "I stopped announcing goals before I start them. Instead, I pick one concrete thing to finish today, close extra tabs, and work quietly until it is done. Over months, those small ordinary days turn into shipped apps, finished books, and a much calmer mind.",
+      },
+    ],
+  },
+  {
+    slug: "psychology-of-money-and-building",
+    title: "What The Psychology of Money taught me about patience and building",
+    description:
+      "Morgan Housel wrote a book about finance, yet almost every chapter reads like advice for building a meaningful career in tech.",
+    date: "2026-11-05",
+    tags: ["Books", "Money", "Life"],
+    blocks: [
+      {
+        type: "p",
+        text: "I picked up The Psychology of Money expecting practical tips on saving and investing. What I actually got was a perspective shift on time, ego, and what freedom really looks like. Even though the book is about wealth, I kept thinking about software engineering and life choices on almost every page.",
+      },
+      { type: "h2", text: "Staying in the game matters more than looking brilliant" },
+      {
+        type: "p",
+        text: "One idea from the book stayed with me for weeks. Compounding does not require extraordinary returns every single year. It requires decent returns repeated for a very long time without blowing up. In tech, it is easy to burn out chasing every new framework or comparing your timeline with strangers on the internet.",
+      },
+      {
+        type: "p",
+        text: "If you keep learning steadily, ship real projects, treat people well, and protect your health so you can stay in the game for years, compounding does the heavy lifting for you.",
+      },
+      { type: "h2", text: "True wealth is control over your time" },
+      {
+        type: "p",
+        text: "Housel writes that the highest dividend money pays is the ability to wake up and say I can do what I want today, with who I want, for as long as I want. That resonated deeply. Chasing expensive things to impress people who barely notice you is exhausting. Building skills and savings that buy you peace, options, and room to breathe is worth far more.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Save for the sake of having options, not just for a specific purchase.",
+          "Leave room for error in your plans because life rarely follows a straight line.",
+          "Respect how differently people grew up before judging how they handle money or risk.",
+        ],
+      },
+      {
+        type: "note",
+        text: "If you only read one personal finance book this year, make it this one. The chapters are short, honest, and easy to revisit whenever you feel rushed.",
+      },
+    ],
+  },
+  {
+    slug: "designing-mobile-apps-offline-first",
+    title: "Why I design mobile apps to work offline first",
+    description:
+      "Real users do not live on perfect office wifi. Lessons from building offline first mobile software with Flutter and local SQLite storage.",
+    date: "2026-10-24",
+    tags: ["Flutter", "Mobile", "Engineering"],
+    blocks: [
+      {
+        type: "p",
+        text: "When you build an app on a fast laptop connected to stable fiber internet, it is very easy to forget what your app feels like on a moving bus or inside a building with one bar of signal. Every screen fetches from an API, every tap shows a loading spinner, and if the network drops for five seconds, the user stares at an error message.",
+      },
+      { type: "h2", text: "What building NaijaPrep taught me" },
+      {
+        type: "p",
+        text: "While building NaijaPrep, an exam preparation and CBT simulator for Nigerian students, assuming constant internet was simply not an option. A student practicing for JAMB or WAEC should never lose their mock exam progress because their mobile data flickered.",
+      },
+      {
+        type: "p",
+        text: "Instead of treating local storage as a quick cache, I made local SQLite via Drift the primary source of truth on the device. Questions, curriculum notes, and active exam attempts live right on the phone. Transitions happen in milliseconds, and the network is only needed when the student wants AI tutor explanations or fresh sync updates.",
+      },
+      { type: "h2", text: "Practical habits for offline first apps" },
+      {
+        type: "ol",
+        items: [
+          "Save user input locally the moment they tap, not only when they hit a final submit button.",
+          "Separate core features that must work without signal from enhanced features that use the cloud.",
+          "Test your app with airplane mode turned on before you call a screen finished.",
+          "Design honest sync indicators so users always know what is saved on device versus backed up online.",
+        ],
+      },
+      {
+        type: "p",
+        text: "An app that works without internet feels noticeably faster even when the internet is working great. Respecting the reality of your users' environment is one of the highest forms of engineering craft.",
+      },
+    ],
+  },
+  {
+    slug: "applying-eighty-twenty-to-software-and-life",
+    title: "Applying the 80/20 rule to software and everyday life",
+    description:
+      "Reading Richard Koch reminded me that being busy is not the same as being effective. Most of our real progress comes from a tiny handful of choices.",
+    date: "2026-10-12",
+    tags: ["Books", "Productivity", "Engineering"],
+    blocks: [
+      {
+        type: "p",
+        text: "For a long time I treated every task on my list as equally important. I would spend three hours tweaking a subtle border animation while a broken checkout flow waited at the bottom of the backlog. I felt busy all day, yet the product barely moved.",
+      },
+      { type: "h2", text: "The vital few versus the trivial many" },
+      {
+        type: "p",
+        text: "The core idea in The 80/20 Principle is simple. Roughly eighty percent of your results come from twenty percent of your efforts. Not every feature matters equally. Not every hour of study produces the same growth. Not every obligation deserves your best energy.",
+      },
+      { type: "h2", text: "How this shows up when building products" },
+      {
+        type: "ul",
+        items: [
+          "In most web apps, twenty percent of the screens carry eighty percent of user traffic. Make those core flows rock solid first.",
+          "In learning a new language or framework, mastering the fundamentals gives you far more leverage than memorizing obscure tricks.",
+          "In daily life, a few good habits like sleep, focused mornings, and honest conversations drive almost all of your peace and output.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Efficiency is doing things right. Effectiveness is choosing the few things that actually matter before you start.",
+      },
+      {
+        type: "p",
+        text: "Now, before I start a work week, I ask myself one plain question. If I only finish two things this week, which two will genuinely move this product or my life forward? Everything else waits until those two are done.",
+      },
+    ],
+  },
+  {
+    slug: "figuring-things-out-as-a-self-driven-developer",
+    title: "Growing as a developer when you have to figure things out yourself",
+    description:
+      "Nobody hands you a complete map when you start building real software. Here is what actually helped me move past tutorial loops.",
+    date: "2026-09-28",
+    tags: ["Life", "Career", "Learning"],
+    blocks: [
+      {
+        type: "p",
+        text: "Almost every developer goes through a season where they watch ten hours of video tutorials, feel like they understand everything, open a blank editor, and immediately freeze. I lived in that loop for months early on. Watching someone else write clean code gives you the comfort of progress without the friction of actual thinking.",
+      },
+      { type: "h2", text: "Friction is where the real learning hides" },
+      {
+        type: "p",
+        text: "Things started changing the day I closed the video player and tried to build a small idea from scratch with only the official documentation open. It was painfully slow at first. I got stuck on routing, broke my database migrations, and spent whole afternoons chasing tiny TypeScript errors.",
+      },
+      {
+        type: "p",
+        text: "Yet every bug I solved by reading docs and tracing stack frames stayed in my head permanently. You never forget a lesson you earned the hard way.",
+      },
+      { type: "h2", text: "Habits that accelerated my growth" },
+      {
+        type: "ol",
+        items: [
+          "Build something slightly above your current skill level so every project forces you to learn two or three new concepts.",
+          "Read error messages all the way to the bottom before searching for a fix.",
+          "Read other people's open source code to see how real teams organize files and handle edge cases.",
+          "Write down what you learned in plain English. If you cannot explain it simply, you do not fully own it yet.",
+        ],
+      },
+      {
+        type: "p",
+        text: "You do not need permission or a perfect environment to become a strong engineer. Curiosity, patience with confusion, and a willingness to finish what you start will carry you further than you think.",
+      },
+    ],
+  },
+  {
+    slug: "quiet-freedom-in-the-courage-to-be-disliked",
+    title: "The quiet freedom inside The Courage to Be Disliked",
+    description:
+      "Notes from a book that challenged how I think about approval, comparison, and doing honest work without constantly checking the scoreboard.",
+    date: "2026-09-14",
+    tags: ["Books", "Mindset", "Life"],
+    blocks: [
+      {
+        type: "p",
+        text: "When I first saw the title The Courage to Be Disliked, I assumed it was about being stubborn or ignoring everyone around you. It is actually the opposite. The book is a dialogue about Adlerian psychology, and at its heart it is about taking responsibility for your own life while respecting other people's freedom.",
+      },
+      { type: "h2", text: "The separation of tasks" },
+      {
+        type: "p",
+        text: "The most freeing concept in the entire book is what the authors call the separation of tasks. Your task is to do your best work, speak honestly, and act with integrity. How someone else chooses to react to you, whether they applaud you or misunderstand you, is their task.",
+      },
+      {
+        type: "p",
+        text: "So much daily anxiety comes from trying to control someone else's task. We hesitate to publish our writing, ship a project, or say no to something unhealthy because we are trying to manage everyone's opinion in advance.",
+      },
+      {
+        type: "quote",
+        text: "Freedom is being willing to be misunderstood while still treating people with kindness and respect.",
+      },
+      { type: "h2", text: "What changed for me after reading it" },
+      {
+        type: "p",
+        text: "I started spending less energy worrying about how my journey looks from the outside and more energy making sure I am proud of the work on the inside. When you stop performing for approval, your creativity opens up and your relationships become much more genuine.",
+      },
+    ],
+  },
+  {
+    slug: "how-refresh-token-rotation-protects-mobile-users",
+    title: "How refresh token rotation actually protects mobile users",
+    description:
+      "A clear breakdown of short lived access tokens, rotating refresh tokens, and single flight refresh from building a live auction app.",
+    date: "2026-09-02",
+    tags: ["Security", "Backend", "Mobile"],
+    blocks: [
+      {
+        type: "p",
+        text: "Mobile users hate logging in every single day. At the same time, handing a phone a single JWT that lasts for thirty days is a serious security risk. If that token is ever leaked or intercepted, an attacker has full access for a month and the server has no clean way to revoke it.",
+      },
+      { type: "h2", text: "Splitting access from renewal" },
+      {
+        type: "p",
+        text: "While building the backend and Flutter client for Solis, I solved this with two separate tokens. The access token is a short lived JWT that expires in fifteen minutes. The refresh token is a random opaque string that lasts thirty days, stored hashed in MongoDB and kept inside the phone's secure Keychain or Keystore.",
+      },
+      { type: "h2", text: "Why rotation and reuse detection matter" },
+      {
+        type: "p",
+        text: "Every time the mobile app uses a refresh token to get a new access token, the server immediately invalidates the old refresh token and issues a brand new one. If an attacker steals an older refresh token and tries to replay it later, the server recognizes that a spent token was reused and immediately revokes the entire session family.",
+      },
+      {
+        type: "note",
+        text: "One subtle detail on the client side: if three API calls fail with 401 at the exact same moment, your HTTP interceptor must lock and run only one refresh request. Otherwise your own app will accidentally trigger reuse detection.",
+      },
+      {
+        type: "p",
+        text: "Good security should feel invisible to honest users and unforgiving to attackers. Taking the extra afternoon to get token rotation right pays off on every single authenticated screen.",
+      },
+    ],
+  },
+  {
+    slug: "ikigai-and-minimalism-choosing-what-to-build",
+    title: "What Ikigai and minimalism taught me about choosing what to build",
+    description:
+      "When you can build almost anything with code, the hardest skill is deciding what deserves your attention and what to leave behind.",
+    date: "2026-08-26",
+    tags: ["Books", "Minimalism", "Life"],
+    blocks: [
+      {
+        type: "p",
+        text: "Every builder I know has a folder full of half started ideas. A new thought pops up on a Sunday night, you scaffold a repository, design two screens, and by Thursday a shinier idea steals your attention. For years I thought having twenty ideas at once was a strength. Eventually I realized it was just clutter.",
+      },
+      { type: "h2", text: "Finding the intersection in Ikigai" },
+      {
+        type: "p",
+        text: "Reading Ikigai alongside The Art of Minimalism helped me slow down. Ikigai asks where four things meet: what you love, what you are good at, what the world needs, and what can sustain you. Minimalism asks a complementary question: what can you remove so the essential things have room to breathe?",
+      },
+      { type: "h2", text: "Subtraction makes products and lives better" },
+      {
+        type: "ul",
+        items: [
+          "A calmer interface with three clear actions beats a crowded dashboard with twenty buttons.",
+          "A smaller bookshelf of books you actually reread beats a hundred books you skimmed to look smart.",
+          "A focused week with two clear priorities leaves you energized instead of scattered.",
+        ],
+      },
+      {
+        type: "p",
+        text: "When I built Verso, a quiet mobile app for poems and journals, minimalism guided every single decision. I kept asking what I could take away until only the words and the calm atmosphere remained. That same filter works surprisingly well for life outside of code.",
+      },
+    ],
+  },
+  {
+    slug: "shipping-a-product-alone-from-blank-folder-to-users",
+    title: "Shipping a product alone from a blank folder to real users",
+    description:
+      "The distance between a working prototype on localhost and a product someone can rely on is where all the real craft happens.",
+    date: "2026-08-19",
+    tags: ["Product", "Engineering", "Shipping"],
+    blocks: [
+      {
+        type: "p",
+        text: "The first seventy percent of a solo project is pure joy. Everything moves fast, screens come alive, and your vision looks close. Then you hit the last thirty percent: validation, password resets, empty states, webhook edge cases, mobile spacing, SEO metadata, and deployment environment variables.",
+      },
+      { type: "h2", text: "The last thirty percent is the product" },
+      {
+        type: "p",
+        text: "Users do not judge your app by how clean your happy path looked during development. They judge it by what happens when their payment fails, when they open it on a small Android phone, or when a search returns zero results. Finishing those unglamorous details is what earns trust.",
+      },
+      { type: "h2", text: "Rules I follow when shipping solo" },
+      {
+        type: "ol",
+        items: [
+          "Cut scope early so you can finish completely. A small finished product always beats an ambitious unfinished one.",
+          "Choose boring, reliable tools you already know well so your energy goes into the product instead of fighting your setup.",
+          "Deploy early, even on day two, so production surprises show up while the codebase is still small.",
+          "Use your own product on your own phone like a real stranger would.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Every time you carry an idea all the way across the finish line, you prove to yourself that you are not just someone who talks about ideas. You are someone who ships.",
+      },
+    ],
+  },
+  {
+    slug: "what-building-twelve-projects-taught-me",
+    title: "What building twelve different projects taught me about myself",
+    description:
+      "Looking back across marketplaces, finance dashboards, exam apps, auction engines, and a quiet journal app, and what the journey actually revealed.",
+    date: "2026-08-05",
+    tags: ["Life", "Craft", "Reflection"],
+    blocks: [
+      {
+        type: "p",
+        text: "When I look at the list of things I have built over the last couple of years, it looks surprisingly diverse. An education marketplace, an offline exam simulator, an art auction app, a luxury hair storefront, an autopilot job scout, a personal finance dashboard, a running partner app, and a quiet poetry journal.",
+      },
+      { type: "h2", text: "Each project leaves a permanent skill behind" },
+      {
+        type: "p",
+        text: "None of those projects were wasted time, even the ones that stayed personal experiments. Molearn taught me how payments and server side entitlements really work. Solis forced me to understand atomic database writes and rotating auth tokens. NaijaPrep taught me offline first mobile architecture. Verso taught me typographic restraint and stillness.",
+      },
+      { type: "h2", text: "Your work quietly shapes your character" },
+      {
+        type: "p",
+        text: "Building software has taught me more about patience, honesty, and humility than almost anything else. Code does not care about excuses. If something is broken, you slow down, look closely at the facts, and fix it with a clear head.",
+      },
+      {
+        type: "quote",
+        text: "You start out thinking you are just building apps, and somewhere along the way you realize the apps have been building you.",
+      },
+      {
+        type: "p",
+        text: "I am still learning, still reading, and still excited by the simple joy of turning a blank screen into something genuinely useful for another human being. That feeling never gets old.",
+      },
+    ],
+  },
+  {
     slug: "responsive-react-applications",
     title: "Building responsive React applications that survive real phones",
     description:

@@ -24,10 +24,7 @@ export function ContactCTA() {
             <div className="grid-pattern pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,var(--surface),transparent_75%)]" />
             <div className="relative flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-xl">
-                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-[var(--bg-subtle)] px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-fg-muted">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
-                  Let&apos;s build together
-                </div>
+                <p className="section-label mb-4">Let&apos;s build together</p>
                 <h2 className="display-heading text-3xl sm:text-4xl lg:text-[2.75rem]">
                   Have a product that needs building?
                 </h2>
@@ -35,7 +32,7 @@ export function ContactCTA() {
                   I&apos;m available for frontend and mobile app engineering — full-time product roles, contracts,
                   or ambitious freelance builds.
                 </p>
-                <div className="mt-6 flex flex-wrap items-center gap-3">
+                <div className="mt-6 flex flex-wrap items-center gap-4">
                   <a
                     href={`mailto:${site.email}`}
                     className="inline-flex items-center gap-2 font-mono text-sm text-fg-muted transition-colors hover:text-fg"
@@ -46,7 +43,7 @@ export function ContactCTA() {
                   <button
                     type="button"
                     onClick={copyEmail}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-[var(--bg-subtle)] px-2.5 py-1 font-mono text-[11px] text-fg-subtle transition-colors hover:border-border-strong hover:text-fg"
+                    className="inline-flex items-center gap-1.5 font-mono text-xs text-fg-subtle underline decoration-border-strong underline-offset-4 transition-colors hover:text-fg"
                   >
                     {copied ? (
                       <>
@@ -56,7 +53,7 @@ export function ContactCTA() {
                     ) : (
                       <>
                         <Copy className="h-3 w-3" aria-hidden="true" />
-                        <span>Copy</span>
+                        <span>Copy email</span>
                       </>
                     )}
                   </button>

@@ -53,7 +53,7 @@ export function ProjectCard({
                 </>
               )}
             </div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-[var(--bg-subtle)] px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+            <span className="inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-wider text-fg-subtle">
               <span
                 className={cn(
                   "h-1.5 w-1.5 rounded-full",
@@ -76,23 +76,11 @@ export function ProjectCard({
 
           <p className="muted mt-2.5 text-sm leading-relaxed sm:text-[15px]">{project.tagline}</p>
 
-          <p className="mt-3 line-clamp-2 border-l-2 border-border-strong pl-3 text-xs leading-relaxed text-fg-subtle">
-            <span className="font-mono uppercase tracking-wider text-fg-muted">Role: </span>
-            {project.role}
+          <p className="mt-4 font-mono text-[11.5px] leading-relaxed text-fg-subtle">
+            {project.technologies.slice(0, 6).join(" · ")}
           </p>
 
-          <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies">
-            {project.technologies.slice(0, 6).map((tech) => (
-              <li
-                key={tech}
-                className="rounded-full border border-border bg-[var(--bg-subtle)]/60 px-2.5 py-1 font-mono text-[11px] text-fg-muted"
-              >
-                {tech}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-auto pt-6">
+          <div className="mt-auto pt-5">
             <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-border pt-4 text-sm">
               <Link
                 href={`/work/${project.slug}`}

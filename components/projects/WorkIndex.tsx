@@ -16,9 +16,15 @@ export function WorkIndex() {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter projects by category">
+      <div
+        className="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-border pb-3"
+        role="group"
+        aria-label="Filter projects by category"
+      >
         {categories.map((category) => {
           const isActive = category === active;
+          const count =
+            category === ALL ? projects.length : projects.filter((p) => p.category === category).length;
           return (
             <button
               key={category}
@@ -26,13 +32,15 @@ export function WorkIndex() {
               onClick={() => setActive(category)}
               aria-pressed={isActive}
               className={cn(
-                "rounded-full border px-4 py-1.5 text-sm transition-colors",
-                isActive
-                  ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent-text)]"
-                  : "border-border text-fg-muted hover:border-border-strong hover:text-fg",
+                "relative pb-1 text-sm transition-colors",
+                isActive ? "font-medium text-fg" : "text-fg-muted hover:text-fg",
               )}
             >
-              {category}
+              <span>{category}</span>
+              <span className="ml-1.5 font-mono text-[11px] text-fg-subtle">{count}</span>
+              {isActive && (
+                <span className="absolute inset-x-0 -bottom-[13px] h-0.5 bg-[var(--accent)]" aria-hidden="true" />
+              )}
             </button>
           );
         })}
